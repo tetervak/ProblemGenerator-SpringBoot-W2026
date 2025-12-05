@@ -1,6 +1,7 @@
 package ca.tetervak.problemgenerator.domain;
 
 import ca.tetervak.problemgenerator.domain.addition.AdditionPair;
+import ca.tetervak.problemgenerator.domain.division.DivisionPair;
 import ca.tetervak.problemgenerator.domain.multiplication.MultiplicationPair;
 import ca.tetervak.problemgenerator.domain.subtraction.SubtractionPair;
 import org.jspecify.annotations.NonNull;
@@ -59,6 +60,19 @@ public record AlgebraProblem(
                 difficultyLevel
         );
     }
+
+    public AlgebraProblem(
+            @NonNull DivisionPair divisionPair,
+            @NonNull DifficultyLevel difficultyLevel
+    ) {
+        this(
+                divisionPair.dividend(),
+                divisionPair.divisor(),
+                AlgebraOperator.DIVIDE,
+                difficultyLevel
+        );
+    }
+
 
     // Shim getters for backward compatibility
     public int getFirstOperand() {

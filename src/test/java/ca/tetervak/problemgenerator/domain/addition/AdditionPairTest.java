@@ -57,4 +57,16 @@ class AdditionPairTest {
         assertEquals(40, pair.firstAddend());
         assertEquals(30, pair.secondAddend());
     }
+
+    @Test
+    void testSum() {
+        AdditionPair pair = new AdditionPair(40, 30);
+        assertEquals(70, pair.sum());
+    }
+
+    @Test
+    void testText() {
+        AdditionPair pair = new AdditionPair(6, 7);
+        assertEquals("6 + 7 = 13", pair.text());
+    }
 }

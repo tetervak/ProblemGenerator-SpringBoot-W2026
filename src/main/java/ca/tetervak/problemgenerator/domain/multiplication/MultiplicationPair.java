@@ -1,5 +1,7 @@
 package ca.tetervak.problemgenerator.domain.multiplication;
 
+import org.jspecify.annotations.NonNull;
+
 public record MultiplicationPair(int multiplicand, int multiplier) {
 
     // explicit canonical constructor with validation
@@ -14,5 +16,14 @@ public record MultiplicationPair(int multiplicand, int multiplier) {
             throw new IllegalArgumentException(
                     "Product of multiplicand and multiplier must be less than or equal to 100");
         }
+    }
+
+    public int product() {
+        return multiplicand * multiplier;
+    }
+
+    @NonNull
+    public String text(){
+        return multiplicand + " * " + multiplier + " = " + product();
     }
 }

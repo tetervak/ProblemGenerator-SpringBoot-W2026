@@ -58,4 +58,16 @@ class MultiplicationPairTest {
         assertEquals(8, pair.multiplicand());
         assertEquals(9, pair.multiplier());
     }
+
+    @Test
+    void testProduct() {
+        MultiplicationPair pair = new MultiplicationPair(8, 9);
+        assertEquals(72, pair.product());
+    }
+
+    @Test
+    void testText() {
+        MultiplicationPair pair = new MultiplicationPair(8, 9);
+        assertEquals("8 * 9 = 72", pair.text());
+    }
 }

@@ -14,4 +14,12 @@ public record SubtractionPair(int minuend, int subtrahend) {
             throw new IllegalArgumentException("Subtrahend must be less than minuend");
         }
     }
+
+    public int difference() {
+        return minuend - subtrahend;
+    }
+
+    public String text() {
+        return minuend + " - " + subtrahend + " = " + difference();
+    }
 }

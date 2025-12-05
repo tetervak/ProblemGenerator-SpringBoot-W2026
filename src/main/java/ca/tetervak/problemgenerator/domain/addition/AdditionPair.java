@@ -14,4 +14,12 @@ public record AdditionPair(int firstAddend, int secondAddend) {
             throw new IllegalArgumentException("Sum of addends must be less than or equal to 100");
         }
     }
+
+    public int sum() {
+        return firstAddend + secondAddend;
+    }
+
+    public String text() {
+        return firstAddend + " + " + secondAddend + " = " + sum();
+    }
 }

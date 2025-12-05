@@ -59,4 +59,16 @@ class SubtractionPairTest {
         assertEquals(75, pair.minuend());
         assertEquals(25, pair.subtrahend());
     }
+
+    @Test
+    void testDifference() {
+        SubtractionPair pair = new SubtractionPair(75, 25);
+        assertEquals(50, pair.difference());
+    }
+
+    @Test
+    void testText() {
+        SubtractionPair pair = new SubtractionPair(23, 10);
+        assertEquals("23 - 10 = 13", pair.text());
+    }
 }
