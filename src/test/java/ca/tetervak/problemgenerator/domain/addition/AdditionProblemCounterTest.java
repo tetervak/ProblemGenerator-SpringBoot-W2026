@@ -1,51 +1,51 @@
 package ca.tetervak.problemgenerator.domain.addition;
 
 import org.junit.jupiter.api.Test;
-
 import static org.junit.jupiter.api.Assertions.*;
+import static java.lang.System.out;
 
 class AdditionProblemCounterTest {
 
     @Test
     void countAdditionProblems() {
         int count = AdditionProblemCounter.countAdditionProblems();
-        System.out.println("Addition Problem count = " + count);
+        out.printf("Addition Problem count = %d%n", count);
     }
 
     @Test
     void countBeginnerAdditionProblems() {
         int count = AdditionProblemCounter.countBeginnerAdditionProblems();
-        System.out.println("Beginner Addition Problem count = " + count);
+        out.printf("Beginner Addition Problem count = %d%n", count);
     }
 
     @Test
     void countEasyAdditionProblems() {
         int count = AdditionProblemCounter.countEasyAdditionProblems();
-        System.out.println("Easy Addition Problem count = " + count);
+        out.printf("Easy Addition Problem count = %d%n", count);
     }
 
     @Test
     void countIntermediateAdditionProblems() {
         int count = AdditionProblemCounter.countIntermediateAdditionProblems();
-        System.out.println("Intermediate Addition Problem count = " + count);
+        out.printf("Intermediate Addition Problem count = %d%n", count);
     }
 
     @Test
     void countModerateAdditionProblems() {
         int count = AdditionProblemCounter.countModerateAdditionProblems();
-        System.out.println("Moderate Addition Problem count = " + count);
+        out.printf("Moderate Addition Problem count = %d%n", count);
     }
 
     @Test
     void countAdvancedAdditionProblems() {
         int count = AdditionProblemCounter.countAdvancedAdditionProblems();
-        System.out.println("Advanced Addition Problem count = " + count);
+        out.printf("Advanced Addition Problem count = %d%n", count);
     }
 
     @Test
     void countChallengingAdditionProblems() {
         int count = AdditionProblemCounter.countChallengingAdditionProblems();
-        System.out.println("Challenging Addition Problem count = " + count);
+        out.printf("Challenging Addition Problem count = %d%n", count);
     }
 
     @Test

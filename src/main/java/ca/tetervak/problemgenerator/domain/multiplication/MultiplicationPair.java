@@ -24,6 +24,6 @@ public record MultiplicationPair(int multiplicand, int multiplier) {
 
     @NonNull
     public String text(){
-        return multiplicand + " * " + multiplier + " = " + product();
+        return "%d * %d = %d".formatted(multiplicand, multiplier, product());
     }
 }

@@ -20,6 +20,6 @@ public record SubtractionPair(int minuend, int subtrahend) {
     }
 
     public String text() {
-        return minuend + " - " + subtrahend + " = " + difference();
+        return "%d - %d = %d".formatted(minuend, subtrahend, difference());
     }
 }

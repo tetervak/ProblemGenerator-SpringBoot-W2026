@@ -20,6 +20,6 @@ public record AdditionPair(int firstAddend, int secondAddend) {
     }
 
     public String text() {
-        return firstAddend + " + " + secondAddend + " = " + sum();
+        return "%d + %d = %d".formatted(firstAddend, secondAddend, sum());
     }
 }

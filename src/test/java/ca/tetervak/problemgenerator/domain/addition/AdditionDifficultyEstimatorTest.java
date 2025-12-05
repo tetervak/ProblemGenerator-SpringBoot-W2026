@@ -2,8 +2,8 @@ package ca.tetervak.problemgenerator.domain.addition;
 
 import ca.tetervak.problemgenerator.domain.DifficultyLevel;
 import org.junit.jupiter.api.Test;
-
 import static org.junit.jupiter.api.Assertions.*;
+import static java.lang.System.out;
 
 class AdditionDifficultyEstimatorTest {
 
@@ -20,13 +20,8 @@ class AdditionDifficultyEstimatorTest {
                         if (level == DifficultyLevel.UNKNOWN) {
                             level = DifficultyLevel.EASY;
                         } else {
-                            System.out.println("Overlap: " + firstAddend + " + " + secondAddend);
-                            System.out.println(
-                                    "in difficulty levels: " +
-                                            level +
-                                            " and " +
-                                            DifficultyLevel.EASY
-                            );
+                            out.printf("Overlap: %d + %d%n", firstAddend, secondAddend);
+                            out.printf("in difficulty levels: %s and %s%n", level, DifficultyLevel.EASY);
                             assertEquals(DifficultyLevel.UNKNOWN, level);
                         }
                     }
@@ -34,13 +29,8 @@ class AdditionDifficultyEstimatorTest {
                         if (level == DifficultyLevel.UNKNOWN) {
                             level = DifficultyLevel.INTERMEDIATE;
                         } else {
-                            System.out.println("Overlap: " + firstAddend + " + " + secondAddend);
-                            System.out.println(
-                                    "in difficulty levels: " +
-                                            level +
-                                            " and " +
-                                            DifficultyLevel.INTERMEDIATE
-                            );
+                            out.printf("Overlap: %d + %d%n", firstAddend, secondAddend);
+                            out.printf("in difficulty levels: %s and %s%n", level, DifficultyLevel.INTERMEDIATE);
                             assertEquals(DifficultyLevel.UNKNOWN, level);
                         }
                     }
@@ -48,13 +38,8 @@ class AdditionDifficultyEstimatorTest {
                         if (level == DifficultyLevel.UNKNOWN) {
                             level = DifficultyLevel.MODERATE;
                         } else {
-                            System.out.println("Overlap: " + firstAddend + " + " + secondAddend);
-                            System.out.println(
-                                    "in difficulty levels: " +
-                                            level +
-                                            " and " +
-                                            DifficultyLevel.MODERATE
-                            );
+                            out.printf("Overlap: %d + %d%n", firstAddend, secondAddend);
+                            out.printf("in difficulty levels: %s and %s%n", level, DifficultyLevel.MODERATE);
                             assertEquals(DifficultyLevel.UNKNOWN, level);
                         }
                     }
@@ -62,13 +47,8 @@ class AdditionDifficultyEstimatorTest {
                         if (level == DifficultyLevel.UNKNOWN) {
                             level = DifficultyLevel.ADVANCED;
                         } else {
-                            System.out.println("Overlap: " + firstAddend + " + " + secondAddend);
-                            System.out.println(
-                                    "in difficulty levels: " +
-                                            level +
-                                            " and " +
-                                            DifficultyLevel.ADVANCED
-                            );
+                            out.printf("Overlap: %d + %d%n", firstAddend, secondAddend);
+                            out.printf("in difficulty levels: %s and %s%n", level, DifficultyLevel.ADVANCED);
                             assertEquals(DifficultyLevel.UNKNOWN, level);
                         }
                     }
@@ -76,18 +56,13 @@ class AdditionDifficultyEstimatorTest {
                         if (level == DifficultyLevel.UNKNOWN) {
                             level = DifficultyLevel.CHALLENGING;
                         } else {
-                            System.out.println("Overlap: " + firstAddend + " + " + secondAddend);
-                            System.out.println(
-                                    "in difficulty levels: " +
-                                            level +
-                                            " and " +
-                                            DifficultyLevel.CHALLENGING
-                            );
+                            out.printf("Overlap: %d + %d%n", firstAddend, secondAddend);
+                            out.printf("in difficulty levels: %s and %s%n", level, DifficultyLevel.CHALLENGING);
                             assertEquals(DifficultyLevel.UNKNOWN, level);
                         }
                     }
                     if(level == DifficultyLevel.UNKNOWN){
-                        System.out.println("Unknown level: " + firstAddend + " + " + secondAddend);
+                        out.printf("Unknown level: %d + %d%n", firstAddend, secondAddend);
                     }
                     assertNotSame(DifficultyLevel.UNKNOWN, level);
                 }

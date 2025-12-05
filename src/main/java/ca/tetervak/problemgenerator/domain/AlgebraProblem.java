@@ -109,11 +109,8 @@ public record AlgebraProblem(
 
     @Override
     public @NonNull String toString() {
-        return "AlgebraProblem{" +
-                "text=" + getText() +
-                ", answer=" + getAnswer() +
-                ", difficultyLevel=" + difficultyLevel +
-                '}';
+        return "AlgebraProblem{text=%s, answer=%d, difficultyLevel=%s}"
+                .formatted(getText(), getAnswer(), difficultyLevel);
     }
 
     @NonNull

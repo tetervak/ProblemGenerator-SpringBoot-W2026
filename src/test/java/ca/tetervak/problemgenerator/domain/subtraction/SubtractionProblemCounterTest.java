@@ -1,51 +1,51 @@
 package ca.tetervak.problemgenerator.domain.subtraction;
 
 import org.junit.jupiter.api.Test;
-
 import static org.junit.jupiter.api.Assertions.*;
+import static java.lang.System.out;
 
 class SubtractionProblemCounterTest {
 
     @Test
     void countSubtractionProblems() {
         int count = SubtractionProblemCounter.countSubtractionProblems();
-        System.out.println("Subtraction Problem count = " + count);
+        out.printf("Subtraction Problem count = %d%n", count);
     }
 
     @Test
     void countBeginnerSubtractionProblems() {
         int count = SubtractionProblemCounter.countBeginnerSubtractionProblems();
-        System.out.println("Beginner Subtraction Problem count = " + count);
+        out.printf("Beginner Subtraction Problem count = %d%n", count);
     }
 
     @Test
     void countEasySubtractionProblems() {
         int count = SubtractionProblemCounter.countEasySubtractionProblems();
-        System.out.println("Easy Subtraction Problem count = " + count);
+        out.printf("Easy Subtraction Problem count = %d%n", count);
     }
 
     @Test
     void countIntermediateSubtractionProblems() {
         int count = SubtractionProblemCounter.countIntermediateSubtractionProblems();
-        System.out.println("Intermediate Subtraction Problem count = " + count);
+        out.printf("Intermediate Subtraction Problem count = %d%n", count);
     }
 
     @Test
     void countModerateSubtractionProblems() {
         int count = SubtractionProblemCounter.countModerateSubtractionProblems();
-        System.out.println("Moderate Subtraction Problem count = " + count);
+        out.printf("Moderate Subtraction Problem count = %d%n", count);
     }
 
     @Test
     void countAdvancedSubtractionProblems() {
         int count = SubtractionProblemCounter.countAdvancedSubtractionProblems();
-        System.out.println("Advanced Subtraction Problem count = " + count);
+        out.printf("Advanced Subtraction Problem count = %d%n", count);
     }
 
     @Test
     void countChallengingSubtractionProblems() {
         int count = SubtractionProblemCounter.countChallengingSubtractionProblems();
-        System.out.println("Challenging Subtraction Problem count = " + count);
+        out.printf("Challenging Subtraction Problem count = %d%n", count);
     }
 
     @Test

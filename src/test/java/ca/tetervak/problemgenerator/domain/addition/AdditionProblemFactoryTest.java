@@ -2,6 +2,7 @@ package ca.tetervak.problemgenerator.domain.addition;
 
 import ca.tetervak.problemgenerator.domain.AlgebraProblem;
 import ca.tetervak.problemgenerator.domain.DifficultyLevel;
+import static java.lang.System.out;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -28,7 +29,7 @@ class AdditionProblemFactoryTest {
     void createRandomBeginnerAdditionProblem() {
         for(int i = 0; i < 100; i++){
             AlgebraProblem problem = factory.createRandomAdditionProblem(DifficultyLevel.BEGINNER);
-            System.out.println(problem);
+            out.println(problem);
             assertTrue(isBeginnerAdditionLevel(problem.getFirstOperand(), problem.getSecondOperand()));
         }
     }
@@ -39,7 +40,7 @@ class AdditionProblemFactoryTest {
         for(int i = 0; i < 100; i++){
             AlgebraProblem problem =
                     factory.createRandomAdditionProblem(DifficultyLevel.EASY);
-            System.out.println(problem);
+            out.println(problem);
             assertTrue(isEasyAdditionLevel(problem.getFirstOperand(), problem.getSecondOperand()));
         }
     }
@@ -49,7 +50,7 @@ class AdditionProblemFactoryTest {
         for(int i = 0; i < 100; i++){
             AlgebraProblem problem =
                     factory.createRandomAdditionProblem(DifficultyLevel.INTERMEDIATE);
-            System.out.println(problem);
+            out.println(problem);
             assertTrue(isIntermediateAdditionLevel(problem.getFirstOperand(), problem.getSecondOperand()));
         }
     }
@@ -59,7 +60,7 @@ class AdditionProblemFactoryTest {
         for(int i = 0; i < 100; i++){
             AlgebraProblem problem =
                     factory.createRandomAdditionProblem(DifficultyLevel.MODERATE);
-            System.out.println(problem);
+            out.println(problem);
             assertTrue(isModerateAdditionLevel(problem.getFirstOperand(), problem.getSecondOperand()));
         }
     }
@@ -69,7 +70,7 @@ class AdditionProblemFactoryTest {
         for(int i = 0; i < 100; i++){
             AlgebraProblem problem =
                     factory.createRandomAdditionProblem(DifficultyLevel.ADVANCED);
-            System.out.println(problem);
+            out.println(problem);
             assertTrue(isAdvancedAdditionLevel(problem.getFirstOperand(), problem.getSecondOperand()));
         }
     }
@@ -79,7 +80,7 @@ class AdditionProblemFactoryTest {
         for(int i = 0; i < 100; i++){
             AlgebraProblem problem =
                     factory.createRandomAdditionProblem(DifficultyLevel.CHALLENGING);
-            System.out.println(problem);
+            out.println(problem);
             assertTrue(isChallengingAdditionLevel(problem.getFirstOperand(), problem.getSecondOperand()));
         }
     }
