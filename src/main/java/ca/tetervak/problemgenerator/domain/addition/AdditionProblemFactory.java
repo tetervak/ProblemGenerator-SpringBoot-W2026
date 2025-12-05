@@ -31,7 +31,7 @@ public class AdditionProblemFactory {
         do{
             firstAddend = random.nextInt(1, 10);
             secondAddend = random.nextInt(1, 10);
-        } while(!isBeginnerLevel(firstAddend, secondAddend));
+        } while(!isBeginnerAdditionLevel(firstAddend, secondAddend));
 
         return new AdditionPair(firstAddend, secondAddend);
     }
@@ -44,7 +44,7 @@ public class AdditionProblemFactory {
         do{
             firstAddend = random.nextInt(1, 11);
             secondAddend = random.nextInt(1, 11);
-        } while(!isEasyLevel(firstAddend, secondAddend));
+        } while(!isEasyAdditionLevel(firstAddend, secondAddend));
 
         return new AdditionPair(firstAddend, secondAddend);
     }
@@ -57,7 +57,7 @@ public class AdditionProblemFactory {
         do{
             firstAddend = random.nextInt(11, 100);
             secondAddend = random.nextInt(1, 10);
-        } while(!isIntermediateLevel(firstAddend, secondAddend));
+        } while(!isIntermediateAdditionLevel(firstAddend, secondAddend));
 
         if(random.nextBoolean()){
             int temp = firstAddend;
@@ -76,7 +76,7 @@ public class AdditionProblemFactory {
         do{
             firstAddend = random.nextInt(11, 100);
             secondAddend = random.nextInt(1, 10);
-        } while(!isModerateLevel(firstAddend, secondAddend));
+        } while(!isModerateAdditionLevel(firstAddend, secondAddend));
 
         if(random.nextBoolean()){
             int temp = firstAddend;
@@ -95,7 +95,7 @@ public class AdditionProblemFactory {
         do{
             firstAddend = random.nextInt(10, 100);
             secondAddend = random.nextInt(10, 100);
-        } while(!isAdvancedLevel(firstAddend, secondAddend));
+        } while(!isAdvancedAdditionLevel(firstAddend, secondAddend));
 
         return new AdditionPair(firstAddend, secondAddend);
     }
@@ -108,7 +108,7 @@ public class AdditionProblemFactory {
         do{
             firstAddend = random.nextInt(10, 100);
             secondAddend = random.nextInt(10, 100);
-        } while(!isChallengingLevel(firstAddend, secondAddend));
+        } while(!isChallengingAdditionLevel(firstAddend, secondAddend));
 
         return new AdditionPair(firstAddend, secondAddend);
     }

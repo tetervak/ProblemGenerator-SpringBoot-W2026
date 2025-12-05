@@ -21,7 +21,7 @@ public class SubtractionProblemCounter {
         for (int minuend = 2; minuend <= 100; minuend++) {
             for (int subtrahend = 1; subtrahend <= 99; subtrahend++) {
                 if (minuend > subtrahend) {
-                    if (isBeginnerLevel(minuend, subtrahend)) {
+                    if (isBeginnerSubtractionLevel(minuend, subtrahend)) {
                         count++;
                     }
                 }
@@ -35,7 +35,7 @@ public class SubtractionProblemCounter {
         for (int minuend = 2; minuend <= 100; minuend++) {
             for (int subtrahend = 1; subtrahend <= 99; subtrahend++) {
                 if (minuend > subtrahend) {
-                    if (isEasyLevel(minuend, subtrahend)) {
+                    if (isEasySubtractionLevel(minuend, subtrahend)) {
                         count++;
                     }
                 }
@@ -49,7 +49,7 @@ public class SubtractionProblemCounter {
         for (int minuend = 2; minuend <= 100; minuend++) {
             for (int subtrahend = 1; subtrahend <= 99; subtrahend++) {
                 if (minuend > subtrahend) {
-                    if (isIntermediateLevel(minuend, subtrahend)) {
+                    if (isIntermediateSubtractionLevel(minuend, subtrahend)) {
                         count++;
                     }
                 }
@@ -63,7 +63,7 @@ public class SubtractionProblemCounter {
         for (int minuend = 2; minuend <= 100; minuend++) {
             for (int subtrahend = 1; subtrahend <= 99; subtrahend++) {
                 if (minuend > subtrahend) {
-                    if (isModerateLevel(minuend, subtrahend)) {
+                    if (isModerateSubtractionLevel(minuend, subtrahend)) {
                         count++;
                     }
                 }
@@ -77,7 +77,7 @@ public class SubtractionProblemCounter {
         for (int minuend = 2; minuend <= 100; minuend++) {
             for (int subtrahend = 1; subtrahend <= 99; subtrahend++) {
                 if (minuend > subtrahend) {
-                    if (isAdvancedLevel(minuend, subtrahend)) {
+                    if (isAdvancedSubtractionLevel(minuend, subtrahend)) {
                         count++;
                     }
                 }
@@ -91,7 +91,7 @@ public class SubtractionProblemCounter {
         for (int minuend = 2; minuend <= 100; minuend++) {
             for (int subtrahend = 1; subtrahend <= 99; subtrahend++) {
                 if (minuend > subtrahend) {
-                    if (isChallengingLevel(minuend, subtrahend)) {
+                    if (isChallengingSubtractionLevel(minuend, subtrahend)) {
                         count++;
                     }
                 }

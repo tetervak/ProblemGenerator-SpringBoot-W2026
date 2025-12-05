@@ -13,10 +13,10 @@ class AdditionDifficultyEstimatorTest {
             for (int secondAddend = 1; secondAddend < 100; secondAddend++) {
                 if(firstAddend + secondAddend <= 100) {
                     DifficultyLevel level = DifficultyLevel.UNKNOWN;
-                    if (AdditionDifficultyEstimator.isBeginnerLevel(firstAddend, secondAddend)) {
+                    if (AdditionDifficultyEstimator.isBeginnerAdditionLevel(firstAddend, secondAddend)) {
                         level = DifficultyLevel.BEGINNER;
                     }
-                    if (AdditionDifficultyEstimator.isEasyLevel(firstAddend, secondAddend)) {
+                    if (AdditionDifficultyEstimator.isEasyAdditionLevel(firstAddend, secondAddend)) {
                         if (level == DifficultyLevel.UNKNOWN) {
                             level = DifficultyLevel.EASY;
                         } else {
@@ -30,7 +30,7 @@ class AdditionDifficultyEstimatorTest {
                             assertEquals(DifficultyLevel.UNKNOWN, level);
                         }
                     }
-                    if (AdditionDifficultyEstimator.isIntermediateLevel(firstAddend, secondAddend)) {
+                    if (AdditionDifficultyEstimator.isIntermediateAdditionLevel(firstAddend, secondAddend)) {
                         if (level == DifficultyLevel.UNKNOWN) {
                             level = DifficultyLevel.INTERMEDIATE;
                         } else {
@@ -44,7 +44,7 @@ class AdditionDifficultyEstimatorTest {
                             assertEquals(DifficultyLevel.UNKNOWN, level);
                         }
                     }
-                    if (AdditionDifficultyEstimator.isModerateLevel(firstAddend, secondAddend)) {
+                    if (AdditionDifficultyEstimator.isModerateAdditionLevel(firstAddend, secondAddend)) {
                         if (level == DifficultyLevel.UNKNOWN) {
                             level = DifficultyLevel.MODERATE;
                         } else {
@@ -58,7 +58,7 @@ class AdditionDifficultyEstimatorTest {
                             assertEquals(DifficultyLevel.UNKNOWN, level);
                         }
                     }
-                    if (AdditionDifficultyEstimator.isAdvancedLevel(firstAddend, secondAddend)) {
+                    if (AdditionDifficultyEstimator.isAdvancedAdditionLevel(firstAddend, secondAddend)) {
                         if (level == DifficultyLevel.UNKNOWN) {
                             level = DifficultyLevel.ADVANCED;
                         } else {
@@ -72,7 +72,7 @@ class AdditionDifficultyEstimatorTest {
                             assertEquals(DifficultyLevel.UNKNOWN, level);
                         }
                     }
-                    if (AdditionDifficultyEstimator.isChallengingLevel(firstAddend, secondAddend)) {
+                    if (AdditionDifficultyEstimator.isChallengingAdditionLevel(firstAddend, secondAddend)) {
                         if (level == DifficultyLevel.UNKNOWN) {
                             level = DifficultyLevel.CHALLENGING;
                         } else {

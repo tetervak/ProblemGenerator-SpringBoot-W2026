@@ -30,7 +30,7 @@ class SubtractionProblemFactoryTest {
             AlgebraProblem problem =
                     factory.createRandomSubtractionProblem(DifficultyLevel.BEGINNER);
             System.out.println(problem);
-            assertTrue(isBeginnerLevel(problem.getFirstOperand(), problem.getSecondOperand()));
+            assertTrue(isBeginnerSubtractionLevel(problem.getFirstOperand(), problem.getSecondOperand()));
         }
     }
 
@@ -40,7 +40,7 @@ class SubtractionProblemFactoryTest {
             AlgebraProblem problem =
                     factory.createRandomSubtractionProblem(DifficultyLevel.EASY);
             System.out.println(problem);
-            assertTrue(isEasyLevel(problem.getFirstOperand(), problem.getSecondOperand()));
+            assertTrue(isEasySubtractionLevel(problem.getFirstOperand(), problem.getSecondOperand()));
         }
     }
 
@@ -50,7 +50,7 @@ class SubtractionProblemFactoryTest {
             AlgebraProblem problem =
                     factory.createRandomSubtractionProblem(DifficultyLevel.INTERMEDIATE);
             System.out.println(problem);
-            assertTrue(isIntermediateLevel(problem.getFirstOperand(), problem.getSecondOperand()));
+            assertTrue(isIntermediateSubtractionLevel(problem.getFirstOperand(), problem.getSecondOperand()));
         }
     }
 
@@ -60,7 +60,7 @@ class SubtractionProblemFactoryTest {
             AlgebraProblem problem =
                     factory.createRandomSubtractionProblem(DifficultyLevel.MODERATE);
             System.out.println(problem);
-            assertTrue(isModerateLevel(problem.getFirstOperand(), problem.getSecondOperand()));
+            assertTrue(isModerateSubtractionLevel(problem.getFirstOperand(), problem.getSecondOperand()));
         }
     }
 
@@ -70,7 +70,7 @@ class SubtractionProblemFactoryTest {
             AlgebraProblem problem =
                     factory.createRandomSubtractionProblem(DifficultyLevel.ADVANCED);
             System.out.println(problem);
-            assertTrue(isAdvancedLevel(problem.getFirstOperand(), problem.getSecondOperand()));
+            assertTrue(isAdvancedSubtractionLevel(problem.getFirstOperand(), problem.getSecondOperand()));
         }
     }
 
@@ -80,7 +80,7 @@ class SubtractionProblemFactoryTest {
             AlgebraProblem problem =
                     factory.createRandomSubtractionProblem(DifficultyLevel.CHALLENGING);
             System.out.println(problem);
-            assertTrue(isChallengingLevel(problem.getFirstOperand(), problem.getSecondOperand()));
+            assertTrue(isChallengingSubtractionLevel(problem.getFirstOperand(), problem.getSecondOperand()));
         }
 
     }

@@ -13,10 +13,10 @@ class SubtractionDifficultyEstimatorTest {
             for (int subtrahend = 1; subtrahend <= 99; subtrahend++) {
                 if(minuend > subtrahend) {
                     DifficultyLevel level = DifficultyLevel.UNKNOWN;
-                    if (SubtractionDifficultyEstimator.isBeginnerLevel(minuend, subtrahend)) {
+                    if (SubtractionDifficultyEstimator.isBeginnerSubtractionLevel(minuend, subtrahend)) {
                         level = DifficultyLevel.BEGINNER;
                     }
-                    if (SubtractionDifficultyEstimator.isEasyLevel(minuend, subtrahend)) {
+                    if (SubtractionDifficultyEstimator.isEasySubtractionLevel(minuend, subtrahend)) {
                         if (level == DifficultyLevel.UNKNOWN) {
                             level = DifficultyLevel.EASY;
                         } else {
@@ -30,7 +30,7 @@ class SubtractionDifficultyEstimatorTest {
                             assertEquals(DifficultyLevel.UNKNOWN, level);
                         }
                     }
-                    if (SubtractionDifficultyEstimator.isIntermediateLevel(minuend, subtrahend)) {
+                    if (SubtractionDifficultyEstimator.isIntermediateSubtractionLevel(minuend, subtrahend)) {
                         if (level == DifficultyLevel.UNKNOWN) {
                             level = DifficultyLevel.INTERMEDIATE;
                         } else {
@@ -44,7 +44,7 @@ class SubtractionDifficultyEstimatorTest {
                             assertEquals(DifficultyLevel.UNKNOWN, level);
                         }
                     }
-                    if (SubtractionDifficultyEstimator.isModerateLevel(minuend, subtrahend)) {
+                    if (SubtractionDifficultyEstimator.isModerateSubtractionLevel(minuend, subtrahend)) {
                         if (level == DifficultyLevel.UNKNOWN) {
                             level = DifficultyLevel.MODERATE;
                         } else {
@@ -58,7 +58,7 @@ class SubtractionDifficultyEstimatorTest {
                             assertEquals(DifficultyLevel.UNKNOWN, level);
                         }
                     }
-                    if (SubtractionDifficultyEstimator.isAdvancedLevel(minuend, subtrahend)) {
+                    if (SubtractionDifficultyEstimator.isAdvancedSubtractionLevel(minuend, subtrahend)) {
                         if (level == DifficultyLevel.UNKNOWN) {
                             level = DifficultyLevel.ADVANCED;
                         } else {
@@ -72,7 +72,7 @@ class SubtractionDifficultyEstimatorTest {
                             assertEquals(DifficultyLevel.UNKNOWN, level);
                         }
                     }
-                    if (SubtractionDifficultyEstimator.isChallengingLevel(minuend, subtrahend)) {
+                    if (SubtractionDifficultyEstimator.isChallengingSubtractionLevel(minuend, subtrahend)) {
                         if (level == DifficultyLevel.UNKNOWN) {
                             level = DifficultyLevel.CHALLENGING;
                         } else {

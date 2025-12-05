@@ -31,7 +31,7 @@ public class SubtractionProblemFactory {
         do{
             minuend = random.nextInt(2, 10);
             subtrahend = random.nextInt(1, 9);
-        } while(!isBeginnerLevel(minuend, subtrahend));
+        } while(!isBeginnerSubtractionLevel(minuend, subtrahend));
 
         return new SubtractionPair(minuend, subtrahend);
     }
@@ -44,7 +44,7 @@ public class SubtractionProblemFactory {
         do{
             minuend = random.nextInt(10, 20);
             subtrahend = random.nextInt(1, 10);
-        } while(!isEasyLevel(minuend, subtrahend));
+        } while(!isEasySubtractionLevel(minuend, subtrahend));
 
         return new SubtractionPair(minuend, subtrahend);
     }
@@ -57,7 +57,7 @@ public class SubtractionProblemFactory {
         do {
             minuend = random.nextInt(20, 101);
             subtrahend = random.nextInt(1, 10);
-        } while(!isIntermediateLevel(minuend, subtrahend));
+        } while(!isIntermediateSubtractionLevel(minuend, subtrahend));
 
         return new SubtractionPair(minuend, subtrahend);
     }
@@ -70,7 +70,7 @@ public class SubtractionProblemFactory {
         do {
             minuend = random.nextInt(20, 101);
             subtrahend = random.nextInt(1, 10);
-        } while(!isModerateLevel(minuend, subtrahend));
+        } while(!isModerateSubtractionLevel(minuend, subtrahend));
 
         return new SubtractionPair(minuend, subtrahend);
     }
@@ -83,7 +83,7 @@ public class SubtractionProblemFactory {
         do {
             minuend = random.nextInt(11, 101);
             subtrahend = random.nextInt(10, 100);
-        } while(!isAdvancedLevel(minuend, subtrahend));
+        } while(!isAdvancedSubtractionLevel(minuend, subtrahend));
 
         return new SubtractionPair(minuend, subtrahend);
     }
@@ -96,7 +96,7 @@ public class SubtractionProblemFactory {
         do {
             minuend = random.nextInt(20, 101);
             subtrahend = random.nextInt(10, 100);
-        } while(!isChallengingLevel(minuend, subtrahend));
+        } while(!isChallengingSubtractionLevel(minuend, subtrahend));
 
         return new SubtractionPair(minuend, subtrahend);
     }

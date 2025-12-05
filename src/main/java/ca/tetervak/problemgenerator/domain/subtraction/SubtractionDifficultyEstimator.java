@@ -6,47 +6,47 @@ import org.jspecify.annotations.NonNull;
 
 public class SubtractionDifficultyEstimator {
 
-    public static boolean isMinuendValid(int minuend) {
+    private static boolean isMinuendValid(int minuend) {
         return minuend >= 2 && minuend <= 100;
     }
 
-    public static void checkMinuendValid(int minuend) {
+    private static void checkMinuendValid(int minuend) {
         if (!isMinuendValid(minuend)) {
             throw new IllegalArgumentException("Invalid minuend: " + minuend);
         }
     }
 
-    public static boolean isSubtrahendValid(int subtrahend) {
+    private static boolean isSubtrahendValid(int subtrahend) {
         return subtrahend >= 1 && subtrahend < 100;
     }
 
-    public static void checkSubtrahendValid(int minuend) {
+    private static void checkSubtrahendValid(int minuend) {
         if (!isSubtrahendValid(minuend)) {
             throw new IllegalArgumentException("Invalid subtrahend: " + minuend);
         }
     }
 
-    public static boolean isDifferenceValid(int minuend, int subtrahend) {
+    private static boolean isDifferenceValid(int minuend, int subtrahend) {
         checkMinuendValid(minuend);
         checkSubtrahendValid(subtrahend);
         int difference = minuend - subtrahend;
         return difference >= 1 && difference < 100;
     }
 
-    public static void checkDifferenceValid(int minuend, int subtrahend) {
+    private static void checkDifferenceValid(int minuend, int subtrahend) {
         if (!isDifferenceValid(minuend, subtrahend)) {
             throw new IllegalArgumentException("Invalid difference: " + minuend + " - " + subtrahend);
         }
     }
 
-    public static boolean hasFirstBorrow(int minuend, int subtrahend) {
+    private static boolean hasFirstBorrow(int minuend, int subtrahend) {
         checkMinuendValid(minuend);
         checkSubtrahendValid(subtrahend);
         checkDifferenceValid(minuend, subtrahend);
         return minuend % 10 < subtrahend % 10;
     }
 
-    public static boolean hasSecondBorrow(int minuend, int subtrahend) {
+    private static boolean hasSecondBorrow(int minuend, int subtrahend) {
         checkMinuendValid(minuend);
         checkSubtrahendValid(subtrahend);
         checkDifferenceValid(minuend, subtrahend);
@@ -57,7 +57,7 @@ public class SubtractionDifficultyEstimator {
         }
     }
 
-    public static boolean hasBorrow(int minuend, int subtrahend) {
+    private static boolean hasBorrow(int minuend, int subtrahend) {
         checkMinuendValid(minuend);
         checkSubtrahendValid(subtrahend);
         checkDifferenceValid(minuend, subtrahend);
@@ -65,24 +65,24 @@ public class SubtractionDifficultyEstimator {
                 hasSecondBorrow(minuend, subtrahend);
     }
 
-    public static boolean isMinuendInBeginnerRange(int minuend) {
+    private static boolean isMinuendInBeginnerRange(int minuend) {
         checkMinuendValid(minuend);
         return minuend >= 2 && minuend <= 9;
     }
 
-    public static boolean isSubtrahendInBeginnerRange(int subtrahend) {
+    private static boolean isSubtrahendInBeginnerRange(int subtrahend) {
         checkSubtrahendValid(subtrahend);
         return subtrahend >= 1 && subtrahend <= 8;
     }
 
-    public static boolean isDifferenceInBeginnerRange(int minuend, int subtrahend) {
+    private static boolean isDifferenceInBeginnerRange(int minuend, int subtrahend) {
         checkMinuendValid(minuend);
         checkSubtrahendValid(subtrahend);
         int difference = minuend - subtrahend;
         return difference >= 1 && difference <= 8;
     }
 
-    public static boolean isBeginnerLevel(int minuend, int subtrahend) {
+    public static boolean isBeginnerSubtractionLevel(int minuend, int subtrahend) {
         checkMinuendValid(minuend);
         checkSubtrahendValid(subtrahend);
         return isMinuendInBeginnerRange(minuend) &&
@@ -90,24 +90,24 @@ public class SubtractionDifficultyEstimator {
                 isDifferenceInBeginnerRange(minuend, subtrahend);
     }
 
-    public static boolean isMinuendInEasyRange(int minuend) {
+    private static boolean isMinuendInEasyRange(int minuend) {
         checkMinuendValid(minuend);
         return minuend >= 10 && minuend <= 19;
     }
 
-    public static boolean isSubtrahendInEasyRange(int subtrahend) {
+    private static boolean isSubtrahendInEasyRange(int subtrahend) {
         checkSubtrahendValid(subtrahend);
         return subtrahend >= 1 && subtrahend <= 9;
     }
 
-    public static boolean isDifferenceInEasyRange(int minuend, int subtrahend) {
+    private static boolean isDifferenceInEasyRange(int minuend, int subtrahend) {
         checkMinuendValid(minuend);
         checkSubtrahendValid(subtrahend);
         int difference = minuend - subtrahend;
         return difference >= 1 && difference <= 18;
     }
 
-    public static boolean isEasyLevel(int minuend, int subtrahend) {
+    public static boolean isEasySubtractionLevel(int minuend, int subtrahend) {
         checkMinuendValid(minuend);
         checkSubtrahendValid(subtrahend);
         return isMinuendInEasyRange(minuend) &&
@@ -115,12 +115,12 @@ public class SubtractionDifficultyEstimator {
                 isDifferenceInEasyRange(minuend, subtrahend);
     }
 
-    public static boolean isMinuendInIntermediateRange(int minuend) {
+    private static boolean isMinuendInIntermediateRange(int minuend) {
         checkMinuendValid(minuend);
         return minuend >= 20 && minuend <= 100;
     }
 
-    public static boolean isIntermediateLevel(int minuend, int subtrahend) {
+    public static boolean isIntermediateSubtractionLevel(int minuend, int subtrahend) {
         checkMinuendValid(minuend);
         checkSubtrahendValid(subtrahend);
         return isMinuendInIntermediateRange(minuend) &&
@@ -129,7 +129,7 @@ public class SubtractionDifficultyEstimator {
                 !hasBorrow(minuend, subtrahend);
     }
 
-    public static boolean isModerateLevel(int minuend, int subtrahend) {
+    public static boolean isModerateSubtractionLevel(int minuend, int subtrahend) {
         checkMinuendValid(minuend);
         checkSubtrahendValid(subtrahend);
         return isMinuendInIntermediateRange(minuend) &&
@@ -138,17 +138,17 @@ public class SubtractionDifficultyEstimator {
                 hasBorrow(minuend, subtrahend);
     }
 
-    public static boolean isMinuendInAdvancedRange(int minuend) {
+    private static boolean isMinuendInAdvancedRange(int minuend) {
         checkMinuendValid(minuend);
         return minuend >= 11 && minuend <= 100;
     }
 
-    public static boolean isSubtrahendInAdvancedRange(int subtrahend) {
+    private static boolean isSubtrahendInAdvancedRange(int subtrahend) {
         checkSubtrahendValid(subtrahend);
         return subtrahend >= 10 && subtrahend <= 99;
     }
 
-    public static boolean isAdvancedLevel(int minuend, int subtrahend) {
+    public static boolean isAdvancedSubtractionLevel(int minuend, int subtrahend) {
         checkMinuendValid(minuend);
         checkSubtrahendValid(subtrahend);
         return isMinuendInAdvancedRange(minuend) &&
@@ -157,7 +157,7 @@ public class SubtractionDifficultyEstimator {
                 !hasBorrow(minuend, subtrahend);
     }
 
-    public static boolean isChallengingLevel(int minuend, int subtrahend) {
+    public static boolean isChallengingSubtractionLevel(int minuend, int subtrahend) {
         checkMinuendValid(minuend);
         checkSubtrahendValid(subtrahend);
         return isMinuendInAdvancedRange(minuend) &&
@@ -168,23 +168,23 @@ public class SubtractionDifficultyEstimator {
 
     @SuppressWarnings("Duplicates")
     @NonNull
-    public static DifficultyLevel getDifficultyLevel(int minuend, int subtrahend) {
-        if (isBeginnerLevel(minuend, subtrahend)) {
+    public static DifficultyLevel getSubtractionDifficultyLevel(int minuend, int subtrahend) {
+        if (isBeginnerSubtractionLevel(minuend, subtrahend)) {
             return DifficultyLevel.BEGINNER;
         }
-        if (isEasyLevel(minuend, subtrahend)) {
+        if (isEasySubtractionLevel(minuend, subtrahend)) {
             return DifficultyLevel.EASY;
         }
-        if (isIntermediateLevel(minuend, subtrahend)) {
+        if (isIntermediateSubtractionLevel(minuend, subtrahend)) {
             return DifficultyLevel.INTERMEDIATE;
         }
-        if (isModerateLevel(minuend, subtrahend)) {
+        if (isModerateSubtractionLevel(minuend, subtrahend)) {
             return DifficultyLevel.MODERATE;
         }
-        if (isAdvancedLevel(minuend, subtrahend)) {
+        if (isAdvancedSubtractionLevel(minuend, subtrahend)) {
             return DifficultyLevel.ADVANCED;
         }
-        if (isChallengingLevel(minuend, subtrahend)) {
+        if (isChallengingSubtractionLevel(minuend, subtrahend)) {
             return DifficultyLevel.CHALLENGING;
         }
         return DifficultyLevel.UNKNOWN;

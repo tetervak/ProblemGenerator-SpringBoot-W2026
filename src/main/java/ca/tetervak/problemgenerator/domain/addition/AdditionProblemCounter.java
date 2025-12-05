@@ -20,7 +20,7 @@ public class AdditionProblemCounter {
         int count = 0;
         for(int firstAddend = 1; firstAddend < 100; firstAddend++){
             for(int secondAddend = 1; secondAddend < 100; secondAddend++){
-                if(isBeginnerLevel(firstAddend, secondAddend)){
+                if(isBeginnerAdditionLevel(firstAddend, secondAddend)){
                     count++;
                 }
             }
@@ -32,7 +32,7 @@ public class AdditionProblemCounter {
         int count = 0;
         for(int firstAddend = 1; firstAddend < 100; firstAddend++){
             for(int secondAddend = 1; secondAddend < 100; secondAddend++){
-                if(isEasyLevel(firstAddend, secondAddend)){
+                if(isEasyAdditionLevel(firstAddend, secondAddend)){
                     count++;
                 }
             }
@@ -44,7 +44,7 @@ public class AdditionProblemCounter {
         int count = 0;
         for(int firstAddend = 1; firstAddend < 100; firstAddend++){
             for(int secondAddend = 1; secondAddend < 100; secondAddend++){
-                if(isIntermediateLevel(firstAddend, secondAddend)){
+                if(isIntermediateAdditionLevel(firstAddend, secondAddend)){
                     count++;
                 }
             }
@@ -56,7 +56,7 @@ public class AdditionProblemCounter {
         int count = 0;
         for(int firstAddend = 1; firstAddend < 100; firstAddend++){
             for(int secondAddend = 1; secondAddend < 100; secondAddend++){
-                if(isModerateLevel(firstAddend, secondAddend)){
+                if(isModerateAdditionLevel(firstAddend, secondAddend)){
                     count++;
                 }
             }
@@ -68,7 +68,7 @@ public class AdditionProblemCounter {
         int count = 0;
         for(int firstAddend = 1; firstAddend < 100; firstAddend++){
             for(int secondAddend = 1; secondAddend < 100; secondAddend++){
-                if(isAdvancedLevel(firstAddend, secondAddend)){
+                if(isAdvancedAdditionLevel(firstAddend, secondAddend)){
                     count++;
                 }
             }
@@ -80,7 +80,7 @@ public class AdditionProblemCounter {
         int count = 0;
         for(int firstAddend = 1; firstAddend < 100; firstAddend++){
             for(int secondAddend = 1; secondAddend < 100; secondAddend++){
-                if(isChallengingLevel(firstAddend, secondAddend)){
+                if(isChallengingAdditionLevel(firstAddend, secondAddend)){
                     count++;
                 }
             }
