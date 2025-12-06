@@ -1,7 +1,10 @@
 package ca.tetervak.problemgenerator.domain.subtraction;
 
+import ca.tetervak.problemgenerator.domain.DifficultyLevel;
 import org.jspecify.annotations.NonNull;
 
+import java.util.HashMap;
+import java.util.Map;
 import java.util.function.BiPredicate;
 
 public class SubtractionProblemCounter {
@@ -18,6 +21,22 @@ public class SubtractionProblemCounter {
             }
         }
         return count;
+    }
+
+    public static Map<DifficultyLevel, Integer> getSubtractionProblemCounts() {
+        Map<DifficultyLevel, Integer> counts = new HashMap<>();
+        for (int minuend = 2; minuend <= 100; minuend++) {
+            for (int subtrahend = 1; subtrahend <= 99; subtrahend++) {
+                if (minuend > subtrahend) {
+                    DifficultyLevel difficultyLevel =
+                            SubtractionDifficultyEstimator.getSubtractionDifficultyLevel(minuend, subtrahend);
+                    counts.merge(difficultyLevel, 1, Integer::sum);
+                } else {
+                    break;
+                }
+            }
+        }
+        return counts;
     }
 
     public static int countSubtractionProblems(

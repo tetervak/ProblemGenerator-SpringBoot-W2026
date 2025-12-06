@@ -54,6 +54,22 @@ class DivisionPairTest {
     }
 
     @Test
+    void testDividendLessThanDivisor() {
+        assertThrows(
+                IllegalArgumentException.class,
+                () -> new DivisionPair(5, 10)
+        );
+    }
+
+    @Test
+    void testDividendEqualToDivisor() {
+        assertThrows(
+                IllegalArgumentException.class,
+                () -> new DivisionPair(5, 5)
+        );
+    }
+
+    @Test
     void testGetters() {
         DivisionPair pair = new DivisionPair(10, 2);
         assertEquals(10, pair.dividend());

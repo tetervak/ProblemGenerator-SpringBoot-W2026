@@ -1,7 +1,10 @@
 package ca.tetervak.problemgenerator.domain.addition;
 
+import ca.tetervak.problemgenerator.domain.DifficultyLevel;
 import org.jspecify.annotations.NonNull;
 
+import java.util.HashMap;
+import java.util.Map;
 import java.util.function.BiPredicate;
 
 public class AdditionProblemCounter {
@@ -18,6 +21,22 @@ public class AdditionProblemCounter {
             }
         }
         return count;
+    }
+
+    public static Map<DifficultyLevel, Integer> getAdditionProblemCounts() {
+        Map<DifficultyLevel, Integer> counts = new HashMap<>();
+        for(int firstAddend = 1; firstAddend < 100; firstAddend++){
+            for(int secondAddend = 1; secondAddend < 100; secondAddend++){
+                if(firstAddend + secondAddend <= 100){
+                    DifficultyLevel difficultyLevel =
+                            AdditionDifficultyEstimator.getAdditionDifficultyLevel(firstAddend, secondAddend);
+                    counts.merge(difficultyLevel, 1, Integer::sum);
+                } else {
+                    break;
+                }
+            }
+        }
+        return counts;
     }
 
     public static int countAdditionProblems(

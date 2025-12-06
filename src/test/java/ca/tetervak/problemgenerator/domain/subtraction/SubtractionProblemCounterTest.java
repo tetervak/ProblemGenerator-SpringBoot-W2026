@@ -1,6 +1,10 @@
 package ca.tetervak.problemgenerator.domain.subtraction;
 
+import ca.tetervak.problemgenerator.domain.DifficultyLevel;
 import org.junit.jupiter.api.Test;
+
+import java.util.Map;
+
 import static org.junit.jupiter.api.Assertions.*;
 import static java.lang.System.out;
 
@@ -82,5 +86,23 @@ class SubtractionProblemCounterTest {
                 challengingCount,
                 separatedCount);
         assertEquals(overallCount, separatedCount);
+    }
+
+    @Test
+    void getSubtractionProblemCounts() {
+        Map<DifficultyLevel, Integer> counts =
+                SubtractionProblemCounter.getSubtractionProblemCounts();
+        int beginnerCount = SubtractionProblemCounter.countBeginnerSubtractionProblems();
+        int easyCount = SubtractionProblemCounter.countEasySubtractionProblems();
+        int intermediateCount = SubtractionProblemCounter.countIntermediateSubtractionProblems();
+        int moderateCount = SubtractionProblemCounter.countModerateSubtractionProblems();
+        int advancedCount = SubtractionProblemCounter.countAdvancedSubtractionProblems();
+        int challengingCount = SubtractionProblemCounter.countChallengingSubtractionProblems();
+        assertEquals(beginnerCount, counts.get(DifficultyLevel.BEGINNER));
+        assertEquals(easyCount, counts.get(DifficultyLevel.EASY));
+        assertEquals(intermediateCount, counts.get(DifficultyLevel.INTERMEDIATE));
+        assertEquals(moderateCount, counts.get(DifficultyLevel.MODERATE));
+        assertEquals(advancedCount, counts.get(DifficultyLevel.ADVANCED));
+        assertEquals(challengingCount, counts.get(DifficultyLevel.CHALLENGING));
     }
 }

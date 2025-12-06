@@ -1,7 +1,10 @@
 package ca.tetervak.problemgenerator.domain.multiplication;
 
+import ca.tetervak.problemgenerator.domain.DifficultyLevel;
 import org.jspecify.annotations.NonNull;
 
+import java.util.HashMap;
+import java.util.Map;
 import java.util.function.BiPredicate;
 
 public class MultiplicationProblemCounter {
@@ -18,6 +21,22 @@ public class MultiplicationProblemCounter {
             }
         }
         return count;
+    }
+
+    public static Map<DifficultyLevel, Integer> getMultiplicationProblemCounts() {
+        Map<DifficultyLevel, Integer> counts = new HashMap<>();
+        for (int multiplicand = 2; multiplicand <= 100; multiplicand++) {
+            for (int multiplier = 2; multiplier <= 100; multiplier++) {
+                if (multiplicand * multiplier <= 100) {
+                    DifficultyLevel difficultyLevel =
+                            MultiplicationDifficultyEstimator.getMultiplicationDifficultyLevel(multiplicand, multiplier);
+                    counts.merge(difficultyLevel, 1, Integer::sum);
+                } else {
+                    break;
+                }
+            }
+        }
+        return counts;
     }
 
     public static int countMultiplicationProblems(
