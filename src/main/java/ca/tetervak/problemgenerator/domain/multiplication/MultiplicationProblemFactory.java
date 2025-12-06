@@ -23,20 +23,20 @@ public class MultiplicationProblemFactory {
 
     @NonNull
     private MultiplicationPair getRandomBeginnerMultiplicationPair() {
-        int multiplicand = random.nextInt(1, 6);
-        int multiplier = random.nextInt(1, 6);
+        int multiplicand = random.nextInt(2, 6);
+        int multiplier = random.nextInt(2, 6);
         return new MultiplicationPair(multiplicand, multiplier);
     }
 
     @NonNull
     private MultiplicationPair getRandomEasyMultiplicationPair() {
-        int[] easyFactors = {1, 5, 10};
-        int factor1 = easyFactors[random.nextInt(0, 3)];
-        int factor2;
-        if (factor1 == 10) {
-            factor2 = random.nextInt(1, 11);
-        } else {
+        int factor1, factor2;
+        if(random.nextBoolean()){
+            factor1 = 5;
             factor2 = random.nextInt(6, 11);
+        } else {
+            factor1 = 10;
+            factor2 = random.nextInt(2, 11);
         }
         if (random.nextBoolean()) {
             return new MultiplicationPair(factor1, factor2);
@@ -69,7 +69,7 @@ public class MultiplicationProblemFactory {
         int factor2;
         do {
             factor1 = random.nextInt(11, 100);
-            factor2 = random.nextInt(1, 9);
+            factor2 = random.nextInt( 2, 9);
         } while (factor1 * factor2 > 100 || factor1 % 10 * factor2 > 9);
 
         if (random.nextBoolean()) {
@@ -85,7 +85,7 @@ public class MultiplicationProblemFactory {
         int factor2;
         do {
             factor1 = random.nextInt(11, 100);
-            factor2 = random.nextInt(1, 9);
+            factor2 = random.nextInt(2, 9);
         } while (factor1 * factor2 > 100 || factor1 % 10 * factor2 <= 9);
 
         if (random.nextBoolean()) {
@@ -116,7 +116,8 @@ public class MultiplicationProblemFactory {
     public AlgebraProblem createRandomMultiplicationProblem(
             @NonNull DifficultyLevel difficultyLevel
     ) {
-        MultiplicationPair multiplicationPair = createRandomMultiplicationPair(difficultyLevel);
+        MultiplicationPair multiplicationPair =
+                createRandomMultiplicationPair(difficultyLevel);
         return new AlgebraProblem(multiplicationPair, difficultyLevel);
     }
 }

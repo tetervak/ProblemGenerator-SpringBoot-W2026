@@ -6,13 +6,13 @@ import org.jspecify.annotations.NonNull;
 public class MultiplicationDifficultyEstimator {
 
     private static boolean isFactorValid(int factor) {
-        return factor >= 1 && factor <= 100;
+        return factor >= 2 && factor <= 100;
     }
 
     private static void checkFactorValid(int factor) {
         if (!isFactorValid(factor)) {
             throw new IllegalArgumentException(
-                    "The multiplication factor must be between 1 and 100: %d".formatted(factor));
+                    "The multiplication factor must be between 2 and 100: %d".formatted(factor));
         }
     }
 
@@ -20,13 +20,13 @@ public class MultiplicationDifficultyEstimator {
         checkFactorValid(multiplicand);
         checkFactorValid(multiplier);
         int product = multiplicand * multiplier;
-        return product >= 1 && product <= 100;
+        return product >= 4 && product <= 100;
     }
 
     private static void checkProductValid(int multiplicand, int multiplier) {
         if (!isProductValid(multiplicand, multiplier)) {
             throw new IllegalArgumentException(
-                    "The product must be between 1 and 100: %d * %d = %d"
+                    "The product must be between 4 and 100: %d * %d = %d"
                             .formatted(multiplicand, multiplier, multiplicand * multiplier)
             );
         }
@@ -42,11 +42,11 @@ public class MultiplicationDifficultyEstimator {
         checkFactorValid(multiplicand);
         checkFactorValid(multiplier);
         return switch (multiplicand) {
-            case 1, 5 -> (multiplier >= 6 && multiplier <= 10);
-            case 10 -> (multiplier >= 1 && multiplier <= 10);
+            case 5 -> (multiplier >= 6 && multiplier <= 10);
+            case 10 -> (multiplier >= 2 && multiplier <= 10);
             default -> switch (multiplier) {
-                case 1, 5 -> (multiplicand >= 6 && multiplicand <= 10);
-                case 10 -> (multiplicand >= 1 && multiplicand <= 10);
+                case 5 -> (multiplicand >= 6 && multiplicand <= 10);
+                case 10 -> (multiplicand >= 2 && multiplicand <= 10);
                 default -> false;
             };
         };

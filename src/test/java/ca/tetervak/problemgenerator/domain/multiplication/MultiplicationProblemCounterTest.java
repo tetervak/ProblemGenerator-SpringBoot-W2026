@@ -11,21 +11,21 @@ class MultiplicationProblemCounterTest {
     void countMultiplicationProblems() {
         int count = MultiplicationProblemCounter.countMultiplicationProblems();
         out.printf("Multiplication Problem count = %d%n", count);
-        assertEquals(482, count);
+        assertEquals(283, count);
     }
 
     @Test
     void countBeginnerMultiplicationProblems() {
         int count = MultiplicationProblemCounter.countBeginnerMultiplicationProblems();
         out.printf("Beginner Multiplication Problem count = %d%n", count);
-        assertEquals(25, count);
+        assertEquals(16, count);
     }
 
     @Test
     void countEasyMultiplicationProblems() {
         int count = MultiplicationProblemCounter.countEasyMultiplicationProblems();
         out.printf("Easy Multiplication Problem count = %d%n", count);
-        assertEquals(35, count);
+        assertEquals(25, count);
     }
 
     @Test
@@ -46,7 +46,7 @@ class MultiplicationProblemCounterTest {
     void countAdvancedMultiplicationProblems() {
         int count = MultiplicationProblemCounter.countAdvancedMultiplicationProblems();
         out.printf("Advanced Multiplication Problem count = %d%n", count);
-        assertEquals(264, count);
+        assertEquals(84, count);
     }
 
     @Test

@@ -8,8 +8,8 @@ public class MultiplicationProblemCounter {
 
     public static int countMultiplicationProblems() {
         int count = 0;
-        for (int multiplicand = 1; multiplicand <= 100; multiplicand++) {
-            for (int multiplier = 1; multiplier <= 100; multiplier++) {
+        for (int multiplicand = 2; multiplicand <= 100; multiplicand++) {
+            for (int multiplier = 2; multiplier <= 100; multiplier++) {
                 if (multiplicand * multiplier <= 100) {
                     count++;
                 } else {
@@ -24,8 +24,8 @@ public class MultiplicationProblemCounter {
             @NonNull BiPredicate<Integer, Integer> condition
     ) {
         int count = 0;
-        for (int multiplicand = 1; multiplicand <= 100; multiplicand++) {
-            for (int multiplier = 1; multiplier <= 100; multiplier++) {
+        for (int multiplicand = 2; multiplicand <= 100; multiplicand++) {
+            for (int multiplier = 2; multiplier <= 100; multiplier++) {
                 if (multiplicand * multiplier <= 100) {
                     if (condition.test(multiplicand, multiplier)) {
                         count++;

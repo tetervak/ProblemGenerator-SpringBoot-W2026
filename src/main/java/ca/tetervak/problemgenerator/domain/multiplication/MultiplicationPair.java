@@ -6,14 +6,14 @@ public record MultiplicationPair(int multiplicand, int multiplier) {
 
     // explicit canonical constructor with validation
     public MultiplicationPair {
-        if (multiplicand < 1 || multiplicand > 100) {
+        if (multiplicand < 2 || multiplicand > 100) {
             throw new IllegalArgumentException(
-                    "Multiplicand must be between 1 and 100: " + multiplicand
+                    "Multiplicand must be between 2 and 100: " + multiplicand
             );
         }
-        if (multiplier < 1 || multiplier > 100) {
+        if (multiplier < 2 || multiplier > 100) {
             throw new IllegalArgumentException(
-                    "Multiplier must be between 1 and 100: " + multiplier
+                    "Multiplier must be between 2 and 100: " + multiplier
             );
         }
         if (multiplicand * multiplier > 100) {

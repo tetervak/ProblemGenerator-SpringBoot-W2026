@@ -17,7 +17,7 @@ class MultiplicationPairTest {
     void testMultiplicandTooLow() {
         assertThrows(
                 IllegalArgumentException.class,
-                () -> new MultiplicationPair(0, 5)
+                () -> new MultiplicationPair(1, 5)
         );
     }
 
@@ -33,7 +33,7 @@ class MultiplicationPairTest {
     void testMultiplierTooLow() {
         assertThrows(
                 IllegalArgumentException.class,
-                () -> new MultiplicationPair(10, 0)
+                () -> new MultiplicationPair(10, 1)
         );
     }
 
