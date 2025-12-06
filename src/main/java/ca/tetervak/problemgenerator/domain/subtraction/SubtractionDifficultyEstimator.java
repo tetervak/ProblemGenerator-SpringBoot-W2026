@@ -166,7 +166,6 @@ public class SubtractionDifficultyEstimator {
                 hasBorrow(minuend, subtrahend);
     }
 
-    @SuppressWarnings("Duplicates")
     @NonNull
     public static DifficultyLevel getSubtractionDifficultyLevel(int minuend, int subtrahend) {
         if (isBeginnerSubtractionLevel(minuend, subtrahend)) {

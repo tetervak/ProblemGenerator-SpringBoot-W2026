@@ -1,5 +1,8 @@
 package ca.tetervak.problemgenerator.domain.multiplication;
 
+import ca.tetervak.problemgenerator.domain.DifficultyLevel;
+import org.jspecify.annotations.NonNull;
+
 public class MultiplicationDifficultyEstimator {
 
     private static boolean isFactorValid(int factor) {
@@ -82,5 +85,28 @@ public class MultiplicationDifficultyEstimator {
         return isProductValid(multiplicand, multiplier) &&
                 (multiplicand >= 11 && multiplier < 10 || multiplicand < 10 && multiplier >= 11) &&
                 hasCarry(multiplicand, multiplier);
+    }
+
+    @NonNull
+    public static DifficultyLevel getMultiplicationDifficultyLevel(int multiplicand, int multiplier) {
+        if (isBeginnerMultiplicationLevel(multiplicand, multiplier)) {
+            return DifficultyLevel.BEGINNER;
+        }
+        if (isEasyMultiplicationLevel(multiplicand, multiplier)) {
+            return DifficultyLevel.EASY;
+        }
+        if (isIntermediateMultiplicationLevel(multiplicand, multiplier)) {
+            return DifficultyLevel.INTERMEDIATE;
+        }
+        if (isModerateMultiplicationLevel(multiplicand, multiplier)) {
+            return DifficultyLevel.MODERATE;
+        }
+        if (isAdvancedMultiplicationLevel(multiplicand, multiplier)) {
+            return DifficultyLevel.ADVANCED;
+        }
+        if (isChallengingMultiplicationLevel(multiplicand, multiplier)) {
+            return DifficultyLevel.CHALLENGING;
+        }
+        return DifficultyLevel.UNKNOWN;
     }
 }

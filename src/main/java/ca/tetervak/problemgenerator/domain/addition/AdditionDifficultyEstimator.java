@@ -178,7 +178,6 @@ public class AdditionDifficultyEstimator {
                 !hasBridgingCarry(firstAddend, secondAddend);
     }
 
-    @SuppressWarnings("Duplicates")
     @NonNull
     public static DifficultyLevel getAdditionDifficultyLevel(int firstAddend, int secondAddend) {
         if (isBeginnerAdditionLevel(firstAddend, secondAddend)) {
