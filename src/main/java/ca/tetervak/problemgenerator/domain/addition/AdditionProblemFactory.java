@@ -124,7 +124,9 @@ public class AdditionProblemFactory {
             case MODERATE -> getRandomModerateAdditionPair();
             case ADVANCED -> getRandomAdvancedAdditionPair();
             case CHALLENGING -> createRandomChallengingAdditionPair();
-            default -> throw new IllegalArgumentException("Invalid difficulty level: " + difficultyLevel);
+            default -> throw new IllegalArgumentException(
+                    "Invalid difficulty level: %s".formatted(difficultyLevel)
+            );
         };
     }
 

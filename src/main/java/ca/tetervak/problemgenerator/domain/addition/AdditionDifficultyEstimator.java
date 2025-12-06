@@ -70,7 +70,9 @@ public class AdditionDifficultyEstimator {
 
     private static void checkOperandBeginnerRange(int operand) {
         if (!isOperandInBeginnerRange(operand)) {
-            throw new IllegalArgumentException("Operand is NOT in the Beginner addition range: " + operand);
+            throw new IllegalArgumentException(
+                    "Operand is NOT in the Beginner addition range: " + operand
+            );
         }
     }
 
@@ -97,7 +99,9 @@ public class AdditionDifficultyEstimator {
     private static void checkOperandEasyRange(int operand) {
         checkOperandValid(operand);
         if (!isOperandInEasyRange(operand)) {
-            throw new IllegalArgumentException("Operand is NOT in the Easy addition range: " + operand);
+            throw new IllegalArgumentException(
+                    "Operand is NOT in the Easy addition range: " + operand
+            );
         }
     }
 

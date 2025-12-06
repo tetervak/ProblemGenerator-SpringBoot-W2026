@@ -1,6 +1,8 @@
 package ca.tetervak.problemgenerator.domain.addition;
 
-import static ca.tetervak.problemgenerator.domain.addition.AdditionDifficultyEstimator.*;
+import org.jspecify.annotations.NonNull;
+
+import java.util.function.BiPredicate;
 
 public class AdditionProblemCounter {
 
@@ -10,6 +12,26 @@ public class AdditionProblemCounter {
             for(int secondAddend = 1; secondAddend < 100; secondAddend++){
                 if(firstAddend + secondAddend <= 100){
                     count++;
+                } else {
+                    break;
+                }
+            }
+        }
+        return count;
+    }
+
+    public static int countAdditionProblems(
+            @NonNull BiPredicate<Integer, Integer> condition
+    ) {
+        int count = 0;
+        for(int firstAddend = 1; firstAddend < 100; firstAddend++){
+            for(int secondAddend = 1; secondAddend < 100; secondAddend++){
+                if(firstAddend + secondAddend <= 100) {
+                    if (condition.test(firstAddend, secondAddend)) {
+                        count++;
+                    }
+                } else {
+                    break;
                 }
             }
         }
@@ -17,74 +39,26 @@ public class AdditionProblemCounter {
     }
 
     public static int countBeginnerAdditionProblems(){
-        int count = 0;
-        for(int firstAddend = 1; firstAddend < 100; firstAddend++){
-            for(int secondAddend = 1; secondAddend < 100; secondAddend++){
-                if(isBeginnerAdditionLevel(firstAddend, secondAddend)){
-                    count++;
-                }
-            }
-        }
-        return count;
+        return countAdditionProblems(AdditionDifficultyEstimator::isBeginnerAdditionLevel);
     }
 
     public static int countEasyAdditionProblems(){
-        int count = 0;
-        for(int firstAddend = 1; firstAddend < 100; firstAddend++){
-            for(int secondAddend = 1; secondAddend < 100; secondAddend++){
-                if(isEasyAdditionLevel(firstAddend, secondAddend)){
-                    count++;
-                }
-            }
-        }
-        return count;
+        return countAdditionProblems(AdditionDifficultyEstimator::isEasyAdditionLevel);
     }
 
     public static int countIntermediateAdditionProblems(){
-        int count = 0;
-        for(int firstAddend = 1; firstAddend < 100; firstAddend++){
-            for(int secondAddend = 1; secondAddend < 100; secondAddend++){
-                if(isIntermediateAdditionLevel(firstAddend, secondAddend)){
-                    count++;
-                }
-            }
-        }
-        return count;
+        return countAdditionProblems(AdditionDifficultyEstimator::isIntermediateAdditionLevel);
     }
 
     public static int countModerateAdditionProblems(){
-        int count = 0;
-        for(int firstAddend = 1; firstAddend < 100; firstAddend++){
-            for(int secondAddend = 1; secondAddend < 100; secondAddend++){
-                if(isModerateAdditionLevel(firstAddend, secondAddend)){
-                    count++;
-                }
-            }
-        }
-        return count;
+        return countAdditionProblems(AdditionDifficultyEstimator::isModerateAdditionLevel);
     }
 
     public static int countAdvancedAdditionProblems(){
-        int count = 0;
-        for(int firstAddend = 1; firstAddend < 100; firstAddend++){
-            for(int secondAddend = 1; secondAddend < 100; secondAddend++){
-                if(isAdvancedAdditionLevel(firstAddend, secondAddend)){
-                    count++;
-                }
-            }
-        }
-        return count;
+        return countAdditionProblems(AdditionDifficultyEstimator::isAdvancedAdditionLevel);
     }
 
     public static int countChallengingAdditionProblems(){
-        int count = 0;
-        for(int firstAddend = 1; firstAddend < 100; firstAddend++){
-            for(int secondAddend = 1; secondAddend < 100; secondAddend++){
-                if(isChallengingAdditionLevel(firstAddend, secondAddend)){
-                    count++;
-                }
-            }
-        }
-        return count;
+        return countAdditionProblems(AdditionDifficultyEstimator::isChallengingAdditionLevel);
     }
 }

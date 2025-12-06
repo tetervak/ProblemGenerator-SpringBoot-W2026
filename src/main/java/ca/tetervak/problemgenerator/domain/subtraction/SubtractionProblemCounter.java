@@ -1,6 +1,8 @@
 package ca.tetervak.problemgenerator.domain.subtraction;
 
-import static ca.tetervak.problemgenerator.domain.subtraction.SubtractionDifficultyEstimator.*;
+import org.jspecify.annotations.NonNull;
+
+import java.util.function.BiPredicate;
 
 public class SubtractionProblemCounter {
 
@@ -10,6 +12,26 @@ public class SubtractionProblemCounter {
             for (int subtrahend = 1; subtrahend <= 99; subtrahend++) {
                 if (minuend > subtrahend) {
                     count++;
+                } else {
+                    break;
+                }
+            }
+        }
+        return count;
+    }
+
+    public static int countSubtractionProblems(
+            @NonNull BiPredicate<Integer, Integer> condition
+    ){
+        int count = 0;
+        for (int minuend = 2; minuend <= 100; minuend++) {
+            for (int subtrahend = 1; subtrahend <= 99; subtrahend++) {
+                if (minuend > subtrahend) {
+                    if (condition.test(minuend, subtrahend)) {
+                        count++;
+                    }
+                } else {
+                    break;
                 }
             }
         }
@@ -17,87 +39,27 @@ public class SubtractionProblemCounter {
     }
 
     public static int countBeginnerSubtractionProblems() {
-        int count = 0;
-        for (int minuend = 2; minuend <= 100; minuend++) {
-            for (int subtrahend = 1; subtrahend <= 99; subtrahend++) {
-                if (minuend > subtrahend) {
-                    if (isBeginnerSubtractionLevel(minuend, subtrahend)) {
-                        count++;
-                    }
-                }
-            }
-        }
-        return count;
+        return countSubtractionProblems(SubtractionDifficultyEstimator::isBeginnerSubtractionLevel);
     }
 
     public static int countEasySubtractionProblems() {
-        int count = 0;
-        for (int minuend = 2; minuend <= 100; minuend++) {
-            for (int subtrahend = 1; subtrahend <= 99; subtrahend++) {
-                if (minuend > subtrahend) {
-                    if (isEasySubtractionLevel(minuend, subtrahend)) {
-                        count++;
-                    }
-                }
-            }
-        }
-        return count;
+        return countSubtractionProblems(SubtractionDifficultyEstimator::isEasySubtractionLevel);
     }
 
     public static int countIntermediateSubtractionProblems() {
-        int count = 0;
-        for (int minuend = 2; minuend <= 100; minuend++) {
-            for (int subtrahend = 1; subtrahend <= 99; subtrahend++) {
-                if (minuend > subtrahend) {
-                    if (isIntermediateSubtractionLevel(minuend, subtrahend)) {
-                        count++;
-                    }
-                }
-            }
-        }
-        return count;
+        return countSubtractionProblems(SubtractionDifficultyEstimator::isIntermediateSubtractionLevel);
     }
 
     public static int countModerateSubtractionProblems() {
-        int count = 0;
-        for (int minuend = 2; minuend <= 100; minuend++) {
-            for (int subtrahend = 1; subtrahend <= 99; subtrahend++) {
-                if (minuend > subtrahend) {
-                    if (isModerateSubtractionLevel(minuend, subtrahend)) {
-                        count++;
-                    }
-                }
-            }
-        }
-        return count;
+        return countSubtractionProblems(SubtractionDifficultyEstimator::isModerateSubtractionLevel);
     }
 
     public static int countAdvancedSubtractionProblems() {
-        int count = 0;
-        for (int minuend = 2; minuend <= 100; minuend++) {
-            for (int subtrahend = 1; subtrahend <= 99; subtrahend++) {
-                if (minuend > subtrahend) {
-                    if (isAdvancedSubtractionLevel(minuend, subtrahend)) {
-                        count++;
-                    }
-                }
-            }
-        }
-        return count;
+        return countSubtractionProblems(SubtractionDifficultyEstimator::isAdvancedSubtractionLevel);
     }
 
     public static int countChallengingSubtractionProblems() {
-        int count = 0;
-        for (int minuend = 2; minuend <= 100; minuend++) {
-            for (int subtrahend = 1; subtrahend <= 99; subtrahend++) {
-                if (minuend > subtrahend) {
-                    if (isChallengingSubtractionLevel(minuend, subtrahend)) {
-                        count++;
-                    }
-                }
-            }
-        }
-        return count;
+        return countSubtractionProblems(SubtractionDifficultyEstimator::isChallengingSubtractionLevel);
     }
 
 }

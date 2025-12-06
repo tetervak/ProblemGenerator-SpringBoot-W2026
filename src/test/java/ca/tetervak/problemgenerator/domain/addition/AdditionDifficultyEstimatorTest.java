@@ -65,6 +65,8 @@ class AdditionDifficultyEstimatorTest {
                         out.printf("Unknown level: %d + %d%n", firstAddend, secondAddend);
                     }
                     assertNotSame(DifficultyLevel.UNKNOWN, level);
+                } else {
+                    break;
                 }
             }
         }
