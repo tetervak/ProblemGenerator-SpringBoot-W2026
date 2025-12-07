@@ -2,14 +2,24 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.simplecss.org/simple.min.css">
     <title>Home</title>
 </head>
 <body>
 <header>
     <h1>Problem Generator</h1>
-    <h2>Home</h2>
+    <nav>
+        <a th:href="@{/}" href="home.html">Home</a>
+        <a th:href="@{/problem-list/addition}" href="difficulties.html">Addition</a>
+        <a th:href="@{/problem-list/subtraction}" href="difficulties.html">Subtraction</a>
+        <a th:href="@{/problem-list/multiplication}" href="difficulties.html">Multiplication</a>
+        <a th:href="@{/problem-list/division}" href="difficulties.html">Division</a>
+        <a th:href="@{/about}" href="about.html">About</a>
+    </nav>
 </header>
 <main>
+    <h2>Home</h2>
     <h3>Index</h3>
     <ul>
         <li>
