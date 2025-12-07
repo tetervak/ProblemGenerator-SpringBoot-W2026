@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Difficulties</title>
+</head>
+<body>
+<header>
+    <h1>Problem Generator</h1>
+    <h2><span th:text="${#strings.capitalize(category)}">Category</span> Difficulty Levels</h2>
+</header>
+<main>
+    <h3>Select Number of Problems or Default</h3>
+    <table>
+        <tr>
+            <th>Level</th>
+            <th>Number of Problems</th>
+        </tr>
+        <tr th:each="level : ${levels}">
+            <td>
+                <a th:href="@{/problem-list/{c}/{l}(c=${category}, l=${level})}"
+                   th:text="${#strings.capitalize(level)}"
+                   href="problems.html">Level</a>
+            </td>
+            <td>
+                <a th:href="@{/problem-list/{c}/{l}(c=${category}, l=${level}, number=5)}"
+                   href="problems.html">5</a>,&nbsp;
+                <a th:href="@{/problem-list/{c}/{l}(c=${category}, l=${level}, number=10)}"
+                   href="problems.html">10</a>,&nbsp;
+                <a th:href="@{/problem-list/{c}/{l}(c=${category}, l=${level}, number=15)}"
+                   href="problems.html">15</a>,&nbsp;or&nbsp;
+                <a th:href="@{/problem-list/{c}/{l}(c=${category}, l=${level}, number=20)}"
+                   href="problems.html">20</a>
+            </td>
+        </tr>
+    </table>
+</main>
+
+</body>
+</html>
