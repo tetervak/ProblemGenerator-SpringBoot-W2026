@@ -14,4 +14,14 @@ public enum AlgebraProblemCategory {
             case DIVIDE -> DIVISION;
         };
     }
+
+    public static AlgebraProblemCategory fromString(String category) {
+        return switch (category) {
+            case "addition" -> ADDITION;
+            case "subtraction" -> SUBTRACTION;
+            case "multiplication" -> MULTIPLICATION;
+            case "division" -> DIVISION;
+            default -> throw new IllegalArgumentException("Invalid category: " + category);
+        };
+    }
 }

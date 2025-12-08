@@ -7,5 +7,17 @@ public enum DifficultyLevel {
     MODERATE,
     ADVANCED,
     CHALLENGING,
-    UNKNOWN
+    UNKNOWN;
+
+    public static DifficultyLevel fromString(String level) {
+        return switch (level) {
+            case "beginner" -> BEGINNER;
+            case "easy" -> EASY;
+            case "intermediate" -> INTERMEDIATE;
+            case "moderate" -> MODERATE;
+            case "advanced" -> ADVANCED;
+            case "challenging" -> CHALLENGING;
+            default -> UNKNOWN;
+        };
+    }
 }

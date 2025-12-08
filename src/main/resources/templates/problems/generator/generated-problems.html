@@ -10,7 +10,49 @@
 <body>
 <header th:replace="problems/problems-index :: problems-header"></header>
 <main>
+    <p>
+        <a th:href="@{/home}">Home</a>&nbsp;&#10219&nbsp;
+        <a th:href="@{/problems}">Problems</a>&nbsp;&#10219&nbsp;
+        <a th:href="@{/problems/categories}">Categories</a>&nbsp;&#10219&nbsp;
+        <a th:href="@{/problems/categories/{c}(c=${category})}"
+                th:text="${#strings.capitalize(category)}">Specific Category</a>&nbsp;&#10219&nbsp;
+        Generated Problems
+    </p>
     <h2>Generated Problems</h2>
+    <ul>
+        <li>
+            Category: <span th:text="${#strings.capitalize(category)}" class="value">Category</span>
+        </li>
+        <li>
+            Difficulty Level: <span th:text="${#strings.capitalize(level)}" class="value">Level</span>
+        </li>
+        <li>
+            Number of Problems: <span th:text="${problems.size()}" class="value">Number</span>
+        </li>
+    </ul>
+    <table>
+        <thead>
+            <tr>
+                <th>Count</th>
+                <th>Problem</th>
+                <th>Answer</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="problem, status : ${problems}">
+                <td th:text="${status.count}">Count</td>
+                <td th:text="${problem.text}">Problem</td>
+                <td th:text="${problem.answer}">Answer</td>
+            </tr>
+        </tbody>
+    </table>
+    <form th:action="@{/problems/generator}" method="get">
+        <input type="hidden" name="category" th:value="${category}">
+        <input type="hidden" name="level" th:value="${level}">
+        <input type="hidden" name="number" th:value="${problems.size()}">
+        <button type="submit">Regenerate Problems</button>
+    </form>
 </main>
+<footer th:replace="home/home-index :: course-footer">Some Footer</footer>
 </body>
 </html>

@@ -11,6 +11,7 @@
 <header th:fragment="problems-header">
     <h1>Problem Generator</h1>
     <nav>
+        <a th:href="@{/problems/form}">Request Form</a>
         <a th:each="category : ${categories}"
            th:href="@{/problems/categories/{c}(c=${category})}"
            th:text="${#strings.capitalize(category)}">Category</a>
@@ -32,6 +33,6 @@
 
     </ul>
 </main>
-<footer th:replace="home/home-index :: course-footer"></footer>
+<footer th:replace="home/home-index :: course-footer">Some Footer</footer>
 </body>
 </html>

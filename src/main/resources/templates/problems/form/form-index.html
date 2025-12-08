@@ -14,13 +14,13 @@
         <a th:href="@{/home}">Home</a>&nbsp;&#10219&nbsp;<a th:href="@{/problems}">Problems</a>&nbsp;&#10219&nbsp;Request Form
     </p>
     <h2>Request Form</h2>
-    <form>
+    <form th:action="@{/problems/generator}" method="get">
         <p>
             <label>Number of Problems&nbsp;
                 <input type="number"
-                       name="numProblems"
+                       name="number"
                        value="5"
-                       min="5" max="20" step="5"
+                       min="1" max="10" step="1"
                        required></label>
         </p>
         <p>
@@ -32,7 +32,7 @@
         <p>
             <label>
                 Difficulty&nbsp;
-                <select>
+                <select name="level">
                     <option value="beginner">Beginner</option>
                     <option value="easy">Easy</option>
                     <option value="intermediate">Intermediate</option>
@@ -47,6 +47,6 @@
         </p>
     </form>
 </main>
-<footer th:replace="home/home-index :: course-footer"></footer>
+<footer th:replace="home/home-index :: course-footer">Some Footer</footer>
 </body>
 </html>

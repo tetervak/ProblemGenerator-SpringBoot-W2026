@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -24,19 +24,19 @@
             <th>Number of Problems</th>
         </tr>
         </thead>
-        <tbody>
-        <tr th:each="level : ${levels}">
-            <td th:text="${#strings.capitalize(level)}">Level</td>
-            <td>
-                <a th:href="@{/problems/generator(category=${category}, difficulty=${level}, number=5)}">5</a>,&nbsp;
-                <a th:href="@{/problems/generator(category=${category}, difficulty=${level}, number=10)}">10</a>,&nbsp;
-                <a th:href="@{/problems/generator(category=${category}, difficulty=${level}, number=15)}">15</a>,&nbsp;or&nbsp;
-                <a th:href="@{/problems/generator(category=${category}, difficulty=${level}, number=20)}">20</a>
-            </td>
-        </tr>
+        <tbody th:with="numbers = ${#numbers.sequence(1, 10, 1)}">
+            <tr th:each="level : ${levels}">
+                <td th:text="${#strings.capitalize(level)}">Level</td>
+                <td>
+                    <th:block th:each="number: ${numbers}">
+                        <a th:href="@{/problems/generator(category=${category}, level=${level}, number=${number})}"
+                           th:text="${number}">Number</a>&nbsp;
+                    </th:block>
+                </td>
+            </tr>
         </tbody>
     </table>
 </main>
-<footer th:replace="home/home-index :: course-footer"></footer>
+<footer th:replace="home/home-index :: course-footer">Some Footer</footer>
 </body>
 </html>

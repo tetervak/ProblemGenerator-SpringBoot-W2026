@@ -1,8 +1,5 @@
 package ca.tetervak.problemgenerator.domain;
 
-import lombok.Getter;
-
-@Getter
 public enum AlgebraOperator {
     ADD('+'),
     SUBTRACT('-'),
@@ -13,6 +10,10 @@ public enum AlgebraOperator {
 
     AlgebraOperator(char symbol) {
         this.symbol = symbol;
+    }
+
+    Character getSymbol(){
+        return symbol;
     }
 
     public static AlgebraOperator fromSymbol(char symbol) {
