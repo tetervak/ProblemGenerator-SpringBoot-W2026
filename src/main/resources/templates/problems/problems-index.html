@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.simplecss.org/simple.min.css">
+    <link rel="stylesheet" th:href="@{/css/custom.css}" href="../../static/css/custom.css">
+    <title>Problems Index</title>
+</head>
+<body>
+<header th:fragment="problems-header">
+    <h1>Problem Generator</h1>
+    <nav>
+        <a th:each="category : ${categories}"
+           th:href="@{/problems/categories/{c}(c=${category})}"
+           th:text="${#strings.capitalize(category)}">Category</a>
+    </nav>
+</header>
+<main>
+    <p>
+        <a th:href="@{/home}">Home</a>&nbsp;&#10219&nbsp;
+        Problems
+    </p>
+    <h2>Problems</h2>
+    <ul>
+        <li>
+            <a th:href="@{/problems/categories}">Categories</a>
+        </li>
+        <li>
+            <a th:href="@{/problems/form}">Request Form</a>
+        </li>
+
+    </ul>
+</main>
+<footer th:replace="home/home-index :: course-footer"></footer>
+</body>
+</html>

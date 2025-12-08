@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.simplecss.org/simple.min.css">
+    <link rel="stylesheet" th:href="@{/css/custom.css}" href="../../static/css/custom.css">
+    <title>Home</title>
+</head>
+<body>
+<header>
+    <h1>Problem Generator</h1>
+</header>
+<main>
+    <h2>Home</h2>
+    <ul>
+        <li>
+            <a th:href="@{/problems}">Problems</a>
+            <ul>
+                <li>
+                    <a th:href="@{/problems/categories}">Categories</a>
+                    <ol>
+                        <li><a th:href="@{/problems/categories/addition}">Addition</a></li>
+                        <li><a th:href="@{/problems/categories/subtraction}">Subtraction</a></li>
+                        <li><a th:href="@{/problems/categories/multiplication}">Multiplication</a></li>
+                        <li><a th:href="@{/problems/categories/division}">Division</a></li>
+                    </ol>
+                </li>
+                <li><a th:href="@{/problems/form}">Request Form</a></li>
+            </ul>
+        </li>
+        <li>
+            <a th:href="@{/quiz}">Quiz</a>
+        </li>
+    </ul>
+    <p>
+        <a th:href="@{/about}" href="home-about.html" style="font-size: x-large;">About</a>
+    </p>
+</main>
+<footer th:fragment="course-footer">
+    <p>PROG27545 / Web Application Design and Implementation — Sheridan College,
+        Alexander Tetervak</p>
+</footer>
+</body>
+</html>

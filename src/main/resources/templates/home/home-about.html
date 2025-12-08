@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.simplecss.org/simple.min.css">
+    <link rel="stylesheet" th:href="@{/css/custom.css}" href="../../static/css/custom.css">
+    <title>About</title>
+</head>
+<body>
+<header>
+    <h1>Problem Generator</h1>
+</header>
+<main>
+    <p>
+        <a th:href="@{/home}">Home</a>&nbsp;&#10219&nbsp;
+        About
+    </p>
+    <h2>About Page</h2>
+    <p>This is the about page of the problem generator application.</p>
+</main>
+<footer th:replace="home/home-index :: course-footer"></footer>
+</body>
+</html>

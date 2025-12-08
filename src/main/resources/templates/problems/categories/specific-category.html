@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.simplecss.org/simple.min.css">
+    <link rel="stylesheet" th:href="@{/css/custom.css}" href="../../../static/css/custom.css">
+    <title th:text="${#strings.capitalize(category)}">Specific Category</title>
+</head>
+<body>
+<header th:replace="problems/problems-index :: problems-header"></header>
+<main>
+    <p>
+        <a th:href="@{/home}">Home</a>&nbsp;&#10219&nbsp;
+        <a th:href="@{/problems}">Problems</a>&nbsp;&#10219&nbsp;
+        <a th:href="@{/problems/categories}">Categories</a>&nbsp;&#10219&nbsp;
+        <span th:text="${#strings.capitalize(category)}">Specific Category</span>
+    </p>
+    <h2 th:text="${#strings.capitalize(category)}">Specific Category</h2>
+    <table>
+        <thead>
+        <tr>
+            <th>Difficulty Level</th>
+            <th>Number of Problems</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="level : ${levels}">
+            <td th:text="${#strings.capitalize(level)}">Level</td>
+            <td>
+                <a th:href="@{/problems/generator(category=${category}, difficulty=${level}, number=5)}">5</a>,&nbsp;
+                <a th:href="@{/problems/generator(category=${category}, difficulty=${level}, number=10)}">10</a>,&nbsp;
+                <a th:href="@{/problems/generator(category=${category}, difficulty=${level}, number=15)}">15</a>,&nbsp;or&nbsp;
+                <a th:href="@{/problems/generator(category=${category}, difficulty=${level}, number=20)}">20</a>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</main>
+<footer th:replace="home/home-index :: course-footer"></footer>
+</body>
+</html>

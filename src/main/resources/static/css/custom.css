@@ -1,0 +1,22 @@
+header nav a{
+    border-bottom-width: medium;
+    border-right-width: medium;
+}
+
+header nav a.selected{
+    background-color: honeydew;
+}
+
+label{
+    font-size: x-large;
+    width: fit-content;
+}
+
+footer{
+    font-style: italic;
+    width: 100%;
+}
+
+li{
+    font-size: x-large;
+}

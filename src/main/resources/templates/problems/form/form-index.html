@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.simplecss.org/simple.min.css">
+    <link rel="stylesheet" th:href="@{/css/custom.css}" href="../../../static/css/custom.css">
+    <title>Problem Request Form</title>
+</head>
+<body>
+<header th:replace="problems/problems-index :: problems-header"></header>
+<main>
+    <p>
+        <a th:href="@{/home}">Home</a>&nbsp;&#10219&nbsp;<a th:href="@{/problems}">Problems</a>&nbsp;&#10219&nbsp;Request Form
+    </p>
+    <h2>Request Form</h2>
+    <form>
+        <p>
+            <label>Number of Problems&nbsp;
+                <input type="number"
+                       name="numProblems"
+                       value="5"
+                       min="5" max="20" step="5"
+                       required></label>
+        </p>
+        <p>
+            <label><input type="radio" name="category" value="addition" checked>&nbsp;Addition</label>
+            <label><input type="radio" name="category" value="subtraction">&nbsp;Subtraction</label>
+            <label><input type="radio" name="category" value="multiplication">&nbsp;Multiplication</label>
+            <label><input type="radio" name="category" value="division">&nbsp;Division</label>
+        </p>
+        <p>
+            <label>
+                Difficulty&nbsp;
+                <select>
+                    <option value="beginner">Beginner</option>
+                    <option value="easy">Easy</option>
+                    <option value="intermediate">Intermediate</option>
+                    <option value="moderate">Moderate</option>
+                    <option value="advanced">Advanced</option>
+                    <option value="challenging">Challenging</option>
+                </select>
+            </label>
+        </p>
+        <p>
+            <button type="submit">Generate Problems</button>
+        </p>
+    </form>
+</main>
+<footer th:replace="home/home-index :: course-footer"></footer>
+</body>
+</html>
