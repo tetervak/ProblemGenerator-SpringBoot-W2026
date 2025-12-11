@@ -1,6 +1,7 @@
 package ca.tetervak.problemgenerator.domain.multiplication;
 
 import ca.tetervak.problemgenerator.domain.AlgebraProblem;
+import ca.tetervak.problemgenerator.domain.AlgebraProblemFactory;
 import ca.tetervak.problemgenerator.domain.DifficultyLevel;
 import org.jspecify.annotations.NonNull;
 
@@ -118,6 +119,6 @@ public class MultiplicationProblemFactory {
     ) {
         MultiplicationPair multiplicationPair =
                 createRandomMultiplicationPair(difficultyLevel);
-        return new AlgebraProblem(multiplicationPair, difficultyLevel);
+        return AlgebraProblemFactory.getInstance(multiplicationPair, difficultyLevel);
     }
 }

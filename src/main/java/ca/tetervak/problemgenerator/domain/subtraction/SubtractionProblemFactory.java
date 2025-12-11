@@ -1,6 +1,7 @@
 package ca.tetervak.problemgenerator.domain.subtraction;
 
 import ca.tetervak.problemgenerator.domain.AlgebraProblem;
+import ca.tetervak.problemgenerator.domain.AlgebraProblemFactory;
 import ca.tetervak.problemgenerator.domain.DifficultyLevel;
 import org.jspecify.annotations.NonNull;
 
@@ -121,7 +122,7 @@ public class SubtractionProblemFactory {
             @NonNull DifficultyLevel difficultyLevel
     ) {
         SubtractionPair subtractionPair = createRandomSubtractionPair(difficultyLevel);
-        return new AlgebraProblem(subtractionPair, difficultyLevel);
+        return AlgebraProblemFactory.getInstance(subtractionPair, difficultyLevel);
     }
 
 }

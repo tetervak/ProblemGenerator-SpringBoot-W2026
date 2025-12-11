@@ -1,9 +1,5 @@
 package ca.tetervak.problemgenerator.domain;
 
-import ca.tetervak.problemgenerator.domain.addition.AdditionPair;
-import ca.tetervak.problemgenerator.domain.division.DivisionPair;
-import ca.tetervak.problemgenerator.domain.multiplication.MultiplicationPair;
-import ca.tetervak.problemgenerator.domain.subtraction.SubtractionPair;
 import org.jspecify.annotations.NonNull;
 
 
@@ -23,56 +19,6 @@ public record AlgebraProblem(
             throw new IllegalArgumentException("Second operand must be between 1 and 100");
         }
     }
-
-    // explicit non-canonical constructor for addition
-    public AlgebraProblem(
-            @NonNull AdditionPair additionPair,
-            @NonNull DifficultyLevel difficultyLevel
-    ) {
-        this(
-                additionPair.firstAddend(),
-                additionPair.secondAddend(),
-                AlgebraOperator.ADD,
-                difficultyLevel
-        );
-    }
-
-    public AlgebraProblem(
-            @NonNull SubtractionPair subtractionPair,
-            @NonNull DifficultyLevel difficultyLevel
-    ) {
-        this(
-                subtractionPair.minuend(),
-                subtractionPair.subtrahend(),
-                AlgebraOperator.SUBTRACT,
-                difficultyLevel
-        );
-    }
-
-    public AlgebraProblem(
-            @NonNull MultiplicationPair multiplicationPair,
-            @NonNull DifficultyLevel difficultyLevel
-    ) {
-        this(
-                multiplicationPair.multiplicand(),
-                multiplicationPair.multiplier(),
-                AlgebraOperator.MULTIPLY,
-                difficultyLevel
-        );
-    }
-
-    public AlgebraProblem(
-            @NonNull DivisionPair divisionPair,
-            @NonNull DifficultyLevel difficultyLevel
-    ) {
-        this(
-                divisionPair.dividend(),
-                divisionPair.divisor(),
-                AlgebraOperator.DIVIDE,
-                difficultyLevel
-        );
-    }
-
 
     // Shim getters for backward compatibility
     public int getFirstOperand() {
@@ -111,24 +57,5 @@ public record AlgebraProblem(
     public @NonNull String toString() {
         return "AlgebraProblem{text=%s, answer=%d, difficultyLevel=%s}"
                 .formatted(getText(), getAnswer(), difficultyLevel);
-    }
-
-    @NonNull
-    public static AlgebraProblem createFromText(
-            String text,
-            DifficultyLevel difficultyLevel
-    ) {
-        String[] parts = text.split(" ");
-        if (parts.length != 3) {
-            throw new IllegalArgumentException("Invalid text format: expected 'firstOperand operator secondOperand'");
-        }
-        if (parts[1].length() != 1) {
-            throw new IllegalArgumentException("Operator must be a single character");
-        }
-        int firstOperand = Integer.parseInt(parts[0]);
-        char symbol = parts[1].charAt(0);
-        AlgebraOperator algebraOperator = AlgebraOperator.fromSymbol(symbol);
-        int secondOperand = Integer.parseInt(parts[2]);
-        return new AlgebraProblem(firstOperand, secondOperand, algebraOperator, difficultyLevel);
     }
 }

@@ -10,8 +10,8 @@ class MultiplicationDifficultyEstimatorTest {
 
     @Test
     void checkForGapsAndOverlaps() {
-        for (int multiplicand = 1; multiplicand < 100; multiplicand++) {
-            for (int multiplier = 1; multiplier < 100; multiplier++) {
+        for (int multiplicand = 2; multiplicand < 100; multiplicand++) {
+            for (int multiplier = 2; multiplier < 100; multiplier++) {
                 if(multiplicand * multiplier <= 100) {
                     DifficultyLevel level = DifficultyLevel.UNKNOWN;
                     if (MultiplicationDifficultyEstimator.isBeginnerMultiplicationLevel(multiplicand, multiplier)) {

@@ -1,6 +1,7 @@
 package ca.tetervak.problemgenerator.domain.division;
 
 import ca.tetervak.problemgenerator.domain.AlgebraProblem;
+import ca.tetervak.problemgenerator.domain.AlgebraProblemFactory;
 import ca.tetervak.problemgenerator.domain.DifficultyLevel;
 import ca.tetervak.problemgenerator.domain.multiplication.MultiplicationPair;
 import ca.tetervak.problemgenerator.domain.multiplication.MultiplicationProblemFactory;
@@ -36,6 +37,6 @@ public class DivisionProblemFactory {
             @NonNull DifficultyLevel difficultyLevel
     ) {
         DivisionPair divisionPair = createRandomDivisionPair(difficultyLevel);
-        return new AlgebraProblem(divisionPair, difficultyLevel);
+        return AlgebraProblemFactory.getInstance(divisionPair, difficultyLevel);
     }
 }
