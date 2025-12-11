@@ -1,6 +1,9 @@
 package ca.tetervak.problemgenerator.domain;
 
 import org.junit.jupiter.api.Test;
+
+import java.util.Random;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 class AlgebraProblemCategoryTest {
@@ -22,6 +25,15 @@ class AlgebraProblemCategoryTest {
         assertEquals(
                 AlgebraProblemCategory.DIVISION,
                 AlgebraProblemCategory.fromAlgebraOperator(AlgebraOperator.DIVIDE)
+        );
+    }
+
+    @Test
+    void getRandomAlgebraProblemCategory() {
+        assertNotNull(
+                AlgebraProblemCategory.getRandomAlgebraProblemCategory(
+                        new Random()
+                )
         );
     }
 }

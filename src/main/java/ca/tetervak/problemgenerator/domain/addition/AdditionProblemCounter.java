@@ -1,29 +1,44 @@
 package ca.tetervak.problemgenerator.domain.addition;
 
 import ca.tetervak.problemgenerator.domain.DifficultyLevel;
+import ca.tetervak.problemgenerator.domain.CountsByLevels;
 import org.jspecify.annotations.NonNull;
 
 import java.util.HashMap;
 import java.util.Map;
-import java.util.function.BiPredicate;
 
 public class AdditionProblemCounter {
 
-    public static int countAdditionProblems(){
-        int count = 0;
-        for(int firstAddend = 1; firstAddend < 100; firstAddend++){
-            for(int secondAddend = 1; secondAddend < 100; secondAddend++){
-                if(firstAddend + secondAddend <= 100){
-                    count++;
-                } else {
-                    break;
-                }
+    private final CountsByLevels countsByLevels;
+
+    public AdditionProblemCounter() {
+
+        Map<DifficultyLevel, Integer> counts = getAdditionProblemCounts();
+        int total = 0;
+        for (DifficultyLevel level : DifficultyLevel.values()) {
+            if(level != DifficultyLevel.UNKNOWN){
+                int count = counts.getOrDefault(level, 0);
+                total += count;
             }
         }
-        return count;
+
+        this.countsByLevels = new CountsByLevels(
+                counts.getOrDefault(DifficultyLevel.BEGINNER, 0),
+                counts.getOrDefault(DifficultyLevel.EASY, 0),
+                counts.getOrDefault(DifficultyLevel.INTERMEDIATE, 0),
+                counts.getOrDefault(DifficultyLevel.MODERATE, 0),
+                counts.getOrDefault(DifficultyLevel.ADVANCED, 0),
+                counts.getOrDefault(DifficultyLevel.CHALLENGING, 0),
+                total
+        );
     }
 
-    public static Map<DifficultyLevel, Integer> getAdditionProblemCounts() {
+    @NonNull
+    public CountsByLevels getCountsByLevels() {
+        return countsByLevels;
+    }
+
+    private static Map<DifficultyLevel, Integer> getAdditionProblemCounts() {
         Map<DifficultyLevel, Integer> counts = new HashMap<>();
         for(int firstAddend = 1; firstAddend < 100; firstAddend++){
             for(int secondAddend = 1; secondAddend < 100; secondAddend++){
@@ -37,47 +52,5 @@ public class AdditionProblemCounter {
             }
         }
         return counts;
-    }
-
-    public static int countAdditionProblems(
-            @NonNull BiPredicate<Integer, Integer> condition
-    ) {
-        int count = 0;
-        for(int firstAddend = 1; firstAddend < 100; firstAddend++){
-            for(int secondAddend = 1; secondAddend < 100; secondAddend++){
-                if(firstAddend + secondAddend <= 100) {
-                    if (condition.test(firstAddend, secondAddend)) {
-                        count++;
-                    }
-                } else {
-                    break;
-                }
-            }
-        }
-        return count;
-    }
-
-    public static int countBeginnerAdditionProblems(){
-        return countAdditionProblems(AdditionDifficultyEstimator::isBeginnerAdditionLevel);
-    }
-
-    public static int countEasyAdditionProblems(){
-        return countAdditionProblems(AdditionDifficultyEstimator::isEasyAdditionLevel);
-    }
-
-    public static int countIntermediateAdditionProblems(){
-        return countAdditionProblems(AdditionDifficultyEstimator::isIntermediateAdditionLevel);
-    }
-
-    public static int countModerateAdditionProblems(){
-        return countAdditionProblems(AdditionDifficultyEstimator::isModerateAdditionLevel);
-    }
-
-    public static int countAdvancedAdditionProblems(){
-        return countAdditionProblems(AdditionDifficultyEstimator::isAdvancedAdditionLevel);
-    }
-
-    public static int countChallengingAdditionProblems(){
-        return countAdditionProblems(AdditionDifficultyEstimator::isChallengingAdditionLevel);
     }
 }

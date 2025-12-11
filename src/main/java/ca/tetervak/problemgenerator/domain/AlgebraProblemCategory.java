@@ -1,11 +1,16 @@
 package ca.tetervak.problemgenerator.domain;
 
+import org.jspecify.annotations.NonNull;
+
+import java.util.Random;
+
 public enum AlgebraProblemCategory {
     ADDITION,
     SUBTRACTION,
     MULTIPLICATION,
     DIVISION;
 
+    @NonNull
     public static AlgebraProblemCategory fromAlgebraOperator(AlgebraOperator operator) {
         return switch (operator) {
             case ADD -> ADDITION;
@@ -15,6 +20,7 @@ public enum AlgebraProblemCategory {
         };
     }
 
+    @NonNull
     public static AlgebraProblemCategory fromString(String category) {
         return switch (category) {
             case "addition" -> ADDITION;
@@ -23,5 +29,12 @@ public enum AlgebraProblemCategory {
             case "division" -> DIVISION;
             default -> throw new IllegalArgumentException("Invalid category: " + category);
         };
+    }
+
+    @NonNull
+    public static AlgebraProblemCategory getRandomAlgebraProblemCategory(
+            Random random
+    ){
+        return values()[random.nextInt(values().length)];
     }
 }

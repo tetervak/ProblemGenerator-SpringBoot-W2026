@@ -1,29 +1,43 @@
 package ca.tetervak.problemgenerator.domain.multiplication;
 
+import ca.tetervak.problemgenerator.domain.CountsByLevels;
 import ca.tetervak.problemgenerator.domain.DifficultyLevel;
 import org.jspecify.annotations.NonNull;
 
 import java.util.HashMap;
 import java.util.Map;
-import java.util.function.BiPredicate;
 
 public class MultiplicationProblemCounter {
 
-    public static int countMultiplicationProblems() {
-        int count = 0;
-        for (int multiplicand = 2; multiplicand <= 100; multiplicand++) {
-            for (int multiplier = 2; multiplier <= 100; multiplier++) {
-                if (multiplicand * multiplier <= 100) {
-                    count++;
-                } else {
-                    break;
-                }
+    private final CountsByLevels countsByLevels;
+
+    public MultiplicationProblemCounter() {
+        Map<DifficultyLevel, Integer> counts = getMultiplicationProblemCounts();
+        int total = 0;
+        for (DifficultyLevel level : DifficultyLevel.values()) {
+            if (level != DifficultyLevel.UNKNOWN) {
+                int count = counts.getOrDefault(level, 0);
+                total += count;
             }
         }
-        return count;
+
+        this.countsByLevels = new CountsByLevels(
+                counts.getOrDefault(DifficultyLevel.BEGINNER, 0),
+                counts.getOrDefault(DifficultyLevel.EASY, 0),
+                counts.getOrDefault(DifficultyLevel.INTERMEDIATE, 0),
+                counts.getOrDefault(DifficultyLevel.MODERATE, 0),
+                counts.getOrDefault(DifficultyLevel.ADVANCED, 0),
+                counts.getOrDefault(DifficultyLevel.CHALLENGING, 0),
+                total
+        );
     }
 
-    public static Map<DifficultyLevel, Integer> getMultiplicationProblemCounts() {
+    @NonNull
+    public CountsByLevels getCountsByLevels() {
+        return countsByLevels;
+    }
+
+    private static Map<DifficultyLevel, Integer> getMultiplicationProblemCounts() {
         Map<DifficultyLevel, Integer> counts = new HashMap<>();
         for (int multiplicand = 2; multiplicand <= 100; multiplicand++) {
             for (int multiplier = 2; multiplier <= 100; multiplier++) {
@@ -37,47 +51,5 @@ public class MultiplicationProblemCounter {
             }
         }
         return counts;
-    }
-
-    public static int countMultiplicationProblems(
-            @NonNull BiPredicate<Integer, Integer> condition
-    ) {
-        int count = 0;
-        for (int multiplicand = 2; multiplicand <= 100; multiplicand++) {
-            for (int multiplier = 2; multiplier <= 100; multiplier++) {
-                if (multiplicand * multiplier <= 100) {
-                    if (condition.test(multiplicand, multiplier)) {
-                        count++;
-                    }
-                } else {
-                    break;
-                }
-            }
-        }
-        return count;
-    }
-
-    public static int countBeginnerMultiplicationProblems() {
-        return countMultiplicationProblems(MultiplicationDifficultyEstimator::isBeginnerMultiplicationLevel);
-    }
-
-    public static int countEasyMultiplicationProblems() {
-        return countMultiplicationProblems(MultiplicationDifficultyEstimator::isEasyMultiplicationLevel);
-    }
-
-    public static int countIntermediateMultiplicationProblems() {
-        return countMultiplicationProblems(MultiplicationDifficultyEstimator::isIntermediateMultiplicationLevel);
-    }
-
-    public static int countModerateMultiplicationProblems() {
-        return countMultiplicationProblems(MultiplicationDifficultyEstimator::isModerateMultiplicationLevel);
-    }
-
-    public static int countAdvancedMultiplicationProblems() {
-        return countMultiplicationProblems(MultiplicationDifficultyEstimator::isAdvancedMultiplicationLevel);
-    }
-
-    public static int countChallengingMultiplicationProblems() {
-        return countMultiplicationProblems(MultiplicationDifficultyEstimator::isChallengingMultiplicationLevel);
     }
 }
