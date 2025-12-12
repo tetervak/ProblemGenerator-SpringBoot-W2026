@@ -25,7 +25,7 @@
           method="get">
         <p>
             <label>Level 1&nbsp;
-                <select name="firstLevel" th:field="${compareForm.firstLevel}">
+                <select name="firstLevel" th:field="${compareForm.left}">
                     <option th:each="level: ${levels}"
                             th:value="${level}"
                             th:text="${#strings.capitalize(level)}">Difficulty Level</option>
@@ -33,7 +33,7 @@
         </p>
         <p>
             <label>Level 2&nbsp;
-                <select name="secondLevel" th:field="${compareForm.secondLevel}">
+                <select name="secondLevel" th:field="${compareForm.right}">
                     <option th:each="level: ${levels}"
                             th:value="${level}"
                             th:text="${#strings.capitalize(level)}">Difficulty Level</option>
@@ -50,7 +50,7 @@
     </form>
     <article style="display: flex; flex-direction: row; flex-wrap:wrap; justify-content: space-around">
         <div>
-            <h4>Level 1: <th:block th:text="${#strings.capitalize(compareForm.firstLevel)}">Level</th:block></h4>
+            <h4>Level 1: <th:block th:text="${#strings.capitalize(compareForm.getLeft)}">Level</th:block></h4>
             <table>
                 <thead>
                 <tr>
@@ -60,7 +60,7 @@
                 </tr>
                 </thead>
                 <tbody>
-                <tr th:each="problem, status : ${firstList}">
+                <tr th:each="problem, status : ${leftList}">
                     <td th:text="${status.count}">Count</td>
                     <td th:text="${problem.text}">Problem</td>
                     <td th:text="${problem.answer}">Answer</td>
@@ -69,7 +69,7 @@
             </table>
         </div>
         <div>
-            <h4>Level 2: <th:block th:text="${#strings.capitalize(compareForm.secondLevel)}">Level</th:block></h4>
+            <h4>Level 2: <th:block th:text="${#strings.capitalize(compareForm.getRight)}">Level</th:block></h4>
             <table>
                 <thead>
                 <tr>
@@ -79,7 +79,7 @@
                 </tr>
                 </thead>
                 <tbody>
-                <tr th:each="problem, status : ${secondList}">
+                <tr th:each="problem, status : ${rightList}">
                     <td th:text="${status.count}">Count</td>
                     <td th:text="${problem.text}">Problem</td>
                     <td th:text="${problem.answer}">Answer</td>

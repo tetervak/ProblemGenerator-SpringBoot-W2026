@@ -115,19 +115,19 @@ public class ProblemsController {
         model.addAttribute("compareForm", compareForm);
         String[] levels = {"beginner", "easy", "intermediate", "moderate", "advanced", "challenging"};
         model.addAttribute("levels", levels);
-        List<AlgebraProblem> firstList = problemRepository.getRandomAlgebraProblemList(
+        List<AlgebraProblem> leftList = problemRepository.getRandomAlgebraProblemList(
                 AlgebraProblemCategory.fromString(category),
-                DifficultyLevel.fromString(compareForm.getFirstLevel()),
+                DifficultyLevel.fromString(compareForm.getLeft()),
                 compareForm.getNumber()
         );
-        List<AlgebraProblem> secondList = problemRepository.getRandomAlgebraProblemList(
+        List<AlgebraProblem> rightList = problemRepository.getRandomAlgebraProblemList(
                 AlgebraProblemCategory.fromString(category),
-                DifficultyLevel.fromString(compareForm.getSecondLevel()),
+                DifficultyLevel.fromString(compareForm.getRight()),
                 compareForm.getNumber()
         );
         model.addAttribute("category", category);
-        model.addAttribute("firstList", firstList);
-        model.addAttribute("secondList", secondList);
+        model.addAttribute("leftList", leftList);
+        model.addAttribute("rightList", rightList);
         return "problems/categories/compare-levels";
     }
 

@@ -8,7 +8,7 @@ import lombok.Setter;
 @Getter
 @NoArgsConstructor
 public class CompareForm {
-    private String firstLevel = "beginner";
-    private String secondLevel = "easy";
+    private String left = "beginner";
+    private String right = "easy";
     private int number = 0;
 }
