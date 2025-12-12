@@ -10,5 +10,5 @@ import lombok.Setter;
 public class CompareForm {
     private String firstLevel = "beginner";
     private String secondLevel = "easy";
-    private int number = 5;
+    private int number = 0;
 }

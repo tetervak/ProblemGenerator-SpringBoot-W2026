@@ -7,12 +7,15 @@ import ca.tetervak.problemgenerator.domain.DifficultyLevel;
 import ca.tetervak.problemgenerator.model.CompareForm;
 import ca.tetervak.problemgenerator.model.RequestForm;
 import ca.tetervak.problemgenerator.repository.AlgebraProblemRepository;
+import jakarta.servlet.http.Cookie;
+import jakarta.servlet.http.HttpServletResponse;
 import org.jspecify.annotations.NonNull;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
+import java.net.http.HttpResponse;
 import java.util.List;
 
 @Controller
@@ -96,9 +99,20 @@ public class ProblemsController {
     @GetMapping("/categories/{category}/compare-levels")
     public String problemsCompareLevelsInput(
             @PathVariable String category,
+            @CookieValue(name = "compare-number", required = false, defaultValue = "5") Integer number,
             @ModelAttribute CompareForm compareForm,
-            Model model
+            Model model,
+            HttpServletResponse response
     ) {
+        if(compareForm.getNumber() == 0){
+            compareForm.setNumber(number);
+        } else {
+            Cookie cookie = new Cookie(
+                    "compare-number", String.valueOf(compareForm.getNumber()));
+            cookie.setMaxAge(60 * 60 * 24);
+            cookie.setPath("/problems/categories/");
+            response.addCookie(cookie);
+        }
         model.addAttribute("compareForm", compareForm);
         String[] levels = {"beginner", "easy", "intermediate", "moderate", "advanced", "challenging"};
         model.addAttribute("levels", levels);
@@ -122,6 +136,4 @@ public class ProblemsController {
     public String[] getCategories() {
         return new String[]{"addition", "subtraction", "multiplication", "division"};
     }
-
-
 }
