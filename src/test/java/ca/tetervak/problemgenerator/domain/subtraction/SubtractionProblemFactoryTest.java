@@ -2,7 +2,6 @@ package ca.tetervak.problemgenerator.domain.subtraction;
 
 import ca.tetervak.problemgenerator.domain.AlgebraProblem;
 import ca.tetervak.problemgenerator.domain.DifficultyLevel;
-import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import java.util.Random;
@@ -17,10 +16,6 @@ class SubtractionProblemFactoryTest {
     @BeforeEach
     void setUp() {
         factory = new SubtractionProblemFactory(new Random(4));
-    }
-
-    @AfterEach
-    void tearDown() {
     }
 
     @Test

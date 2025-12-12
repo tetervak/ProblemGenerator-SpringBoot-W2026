@@ -14,14 +14,11 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
-
-import java.net.http.HttpResponse;
 import java.util.List;
 
 @Controller
 @RequestMapping("/problems")
 public class ProblemsController {
-
 
     private final AlgebraProblemRepository problemRepository;
 
@@ -111,6 +108,8 @@ public class ProblemsController {
                     "compare-number", String.valueOf(compareForm.getNumber()));
             cookie.setMaxAge(60 * 60 * 24);
             cookie.setPath("/problems/categories/");
+            cookie.setHttpOnly(true);
+            cookie.setAttribute("SameSite", "Strict");
             response.addCookie(cookie);
         }
         model.addAttribute("compareForm", compareForm);

@@ -2,7 +2,6 @@ package ca.tetervak.problemgenerator.domain.division;
 
 import ca.tetervak.problemgenerator.domain.AlgebraProblem;
 import ca.tetervak.problemgenerator.domain.DifficultyLevel;
-import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -19,10 +18,6 @@ class DivisionProblemFactoryTest {
     @BeforeEach
     void setUp() {
         factory = new DivisionProblemFactory(new Random(4));
-    }
-
-    @AfterEach
-    void tearDown() {
     }
 
     @Test

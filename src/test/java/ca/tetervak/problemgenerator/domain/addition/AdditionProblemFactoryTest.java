@@ -3,7 +3,7 @@ package ca.tetervak.problemgenerator.domain.addition;
 import ca.tetervak.problemgenerator.domain.AlgebraProblem;
 import ca.tetervak.problemgenerator.domain.DifficultyLevel;
 import static java.lang.System.out;
-import org.junit.jupiter.api.AfterEach;
+
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -19,10 +19,6 @@ class AdditionProblemFactoryTest {
     @BeforeEach
     void setUp() {
         factory = new AdditionProblemFactory(new Random(4));
-    }
-
-    @AfterEach
-    void tearDown() {
     }
 
     @Test
