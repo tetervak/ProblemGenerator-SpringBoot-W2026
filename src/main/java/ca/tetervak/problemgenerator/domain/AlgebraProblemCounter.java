@@ -5,6 +5,7 @@ import ca.tetervak.problemgenerator.domain.division.DivisionProblemCounter;
 import ca.tetervak.problemgenerator.domain.multiplication.MultiplicationProblemCounter;
 import ca.tetervak.problemgenerator.domain.subtraction.SubtractionProblemCounter;
 
+@SuppressWarnings("LombokGetterMayBeUsed")
 public class AlgebraProblemCounter {
 
     private final CountsByCategoriesAndLevels problemCounts;

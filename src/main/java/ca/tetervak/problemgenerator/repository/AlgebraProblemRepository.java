@@ -1,9 +1,9 @@
 package ca.tetervak.problemgenerator.repository;
 
-import ca.tetervak.problemgenerator.domain.AlgebraProblem;
-import ca.tetervak.problemgenerator.domain.AlgebraProblemCategory;
-import ca.tetervak.problemgenerator.domain.DifficultyLevel;
+import ca.tetervak.problemgenerator.domain.*;
 import org.jspecify.annotations.NonNull;
+
+import java.util.List;
 
 public interface AlgebraProblemRepository {
 
@@ -23,11 +23,23 @@ public interface AlgebraProblemRepository {
 
     int getAlgebraProblemTotalCount();
 
-    int getAlgebraProblemCountByCategory(AlgebraProblemCategory category);
-
-    int getAlgebraProblemCountByCategoryAndDifficultyLevel(
-            AlgebraProblemCategory category,
-            DifficultyLevel difficultyLevel
+    int getAlgebraProblemCountByCategory(
+            @NonNull AlgebraProblemCategory category
     );
 
+    @NonNull
+    CountsByLevels getAlgebraProblemCountsByLevels(
+            @NonNull AlgebraProblemCategory category
+    );
+
+    int getAlgebraProblemCountByCategoryAndDifficultyLevel(
+            @NonNull AlgebraProblemCategory category,
+            @NonNull DifficultyLevel difficultyLevel
+    );
+
+    @NonNull List<AlgebraProblem> getRandomAlgebraProblemList(
+            @NonNull AlgebraProblemCategory category,
+            @NonNull DifficultyLevel difficultyLevel,
+            int numberOfProblems
+    );
 }

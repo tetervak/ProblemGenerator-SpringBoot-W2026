@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.simplecss.org/simple.min.css">
+    <link rel="stylesheet" th:href="@{/css/custom.css}" href="../../../static/css/custom.css">
+    <title>Problem Request Form</title>
+</head>
+<body>
+<header th:replace="~{problems/problems-index :: problems-header}"></header>
+<main th:object="${compareForm}">
+    <p>
+        <a th:href="@{/home}">Home</a>&nbsp;&#10219&nbsp;
+        <a th:href="@{/problems}">Problems</a>&nbsp;&#10219&nbsp;
+        <a th:href="@{/problems/categories}">Categories</a>&nbsp;&#10219&nbsp;
+        <a th:href="@{/problems/categories/{c}(c=${category})}"
+                th:text="${#strings.capitalize(category)}">Specific Category</a>&nbsp;&#10219&nbsp;
+        Compare Levels
+    </p>
+    <h2>
+        <th:block th:text="${#strings.capitalize(category)}">Specific Category</th:block>&nbsp;Levels
+    </h2>
+    <form th:action="@{/problems/categories/{c}/compare-levels(c=${category})}"
+          method="get">
+        <p>
+            <label>Level 1&nbsp;
+                <select name="firstLevel" th:field="${compareForm.firstLevel}">
+                    <option th:each="level: ${levels}"
+                            th:value="${level}"
+                            th:text="${#strings.capitalize(level)}">Difficulty Level</option>
+                </select></label>
+        </p>
+        <p>
+            <label>Level 2&nbsp;
+                <select name="secondLevel" th:field="${compareForm.secondLevel}">
+                    <option th:each="level: ${levels}"
+                            th:value="${level}"
+                            th:text="${#strings.capitalize(level)}">Difficulty Level</option>
+                </select></label>
+        </p>
+        <p>
+            <label>Number&nbsp;
+                <input type="number" name="number" th:field="${compareForm.number}" min="1" max="10">
+            </label>
+        </p>
+        <p>
+            <button type="submit">Compare Levels</button>
+        </p>
+    </form>
+    <article style="display: flex; flex-direction: row; flex-wrap:wrap; justify-content: space-around">
+        <div>
+            <h4>Level 1: <th:block th:text="${#strings.capitalize(compareForm.firstLevel)}">Level</th:block></h4>
+            <table>
+                <thead>
+                <tr>
+                    <th>Count</th>
+                    <th>Problem</th>
+                    <th>Answer</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:each="problem, status : ${firstList}">
+                    <td th:text="${status.count}">Count</td>
+                    <td th:text="${problem.text}">Problem</td>
+                    <td th:text="${problem.answer}">Answer</td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+        <div>
+            <h4>Level 2: <th:block th:text="${#strings.capitalize(compareForm.secondLevel)}">Level</th:block></h4>
+            <table>
+                <thead>
+                <tr>
+                    <th>Count</th>
+                    <th>Problem</th>
+                    <th>Answer</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:each="problem, status : ${secondList}">
+                    <td th:text="${status.count}">Count</td>
+                    <td th:text="${problem.text}">Problem</td>
+                    <td th:text="${problem.answer}">Answer</td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </article>
+</main>
+<footer th:replace="~{home/home-index :: course-footer}">Some Footer</footer>
+</body>
+</html>

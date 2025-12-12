@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.simplecss.org/simple.min.css">
+    <link rel="stylesheet" th:href="@{/css/custom.css}" href="../../../static/css/custom.css">
+    <title>Problem Request Form</title>
+</head>
+<body>
+<header th:replace="~{problems/problems-index :: problems-header}"></header>
+<main th:object="${requestForm}">
+    <p>
+        <a th:href="@{/home}">Home</a>&nbsp;&#10219&nbsp;
+        <a th:href="@{/problems}">Problems</a>&nbsp;&#10219&nbsp;
+        <a th:href="@{/problems/form}">Request Form</a>&nbsp;&#10219&nbsp;
+        Confirm Request
+    </p>
+    <h2>Confirm Request</h2>
+    <ul>
+        <li><label>Category: <span th:text="${#strings.capitalize(requestForm.category)}" class="value">Specific Category</span></label></li>
+        <li><label>Level: <span th:text="${#strings.capitalize(requestForm.level)}" class="value">Difficulty Level</span></label></li>
+        <li><label>Number of problems: <span th:text="${requestForm.number}" class="value">Number of Problems</span></label></li>
+    </ul>
+    <p>
+        <a style="font-size: x-large" th:href="@{/problems/form(category=${requestForm.category}, level=${requestForm.level}, number=${requestForm.number})}">Edit Request</a>
+    </p>
+    <form th:action="@{/problems/generator}">
+        <input type="hidden" name="category" th:value="${requestForm.category}">
+        <input type="hidden" name="level" th:value="${requestForm.level}">
+        <input type="hidden" name="number" th:value="${requestForm.number}">
+        <button type="submit">Confirm Request</button>
+    </form>
+</main>
+<footer th:replace="~{home/home-index :: course-footer}">Some Footer</footer>
+</body>
+</html>

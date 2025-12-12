@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -30,9 +30,8 @@
         <li>
             <a th:href="@{/problems/form}">Request Form</a>
         </li>
-
     </ul>
 </main>
-<footer th:replace="home/home-index :: course-footer">Some Footer</footer>
+<footer th:replace="~{home/home-index :: course-footer}">Some Footer</footer>
 </body>
 </html>

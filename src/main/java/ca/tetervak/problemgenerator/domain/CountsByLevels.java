@@ -29,4 +29,9 @@ public record CountsByLevels(
             default -> throw new IllegalArgumentException("Invalid difficulty level");
         };
     }
+
+    public int getCountByLevel(String level) {
+        return getCountByLevel(DifficultyLevel.fromString(level));
+    }
+
 }

@@ -8,8 +8,12 @@ public class AlgebraProblemListFactory {
 
     private final AlgebraProblemFactory problemFactory;
 
+    public AlgebraProblemListFactory(@NonNull AlgebraProblemFactory problemFactory) {
+        this.problemFactory = problemFactory;
+    }
+
     public AlgebraProblemListFactory(@NonNull Random random) {
-        this.problemFactory = new AlgebraProblemFactory(random);
+        this(new AlgebraProblemFactory(random));
     }
 
     public AlgebraProblemListFactory() {
