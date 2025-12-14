@@ -26,6 +26,8 @@
                        th:field="${requestForm.number}"
                        min="1" max="10" step="1"
                        required></label>
+            <span class="error-message"
+                  th:if="${#fields.hasErrors('number')}" th:errors="${requestForm.number}">Number Error</span>
         </p>
         <p>
             <th:block th:each="category: ${categories}">
@@ -33,16 +35,21 @@
                               th:value="${category}" th:field="${requestForm.category}">&nbsp;
                     <th:block th:text="${#strings.capitalize(category)}">Specific Category</th:block></label>
             </th:block>
+            <span class="error-message"
+                  th:if="${#fields.hasErrors('category')}" th:errors="${requestForm.category}">Category Error</span>
         </p>
         <p>
             <label>
                 Difficulty&nbsp;
                 <select name="level" th:field="${requestForm.level}">
+                    <option th:value="select" style="color:red;">--Select--</option>
                     <option th:each="level: ${levels}"
                             th:value="${level}"
                             th:text="${#strings.capitalize(level)}">Difficulty Level</option>
                 </select>
             </label>
+            <span class="error-message"
+                  th:if="${#fields.hasErrors('level')}" th:errors="${requestForm.level}">Level Error</span>
         </p>
         <p>
             <button type="submit">Submit Request</button>

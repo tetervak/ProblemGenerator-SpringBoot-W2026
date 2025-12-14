@@ -27,6 +27,11 @@ public enum DifficultyLevel {
     }
 
     @NonNull
+    public static String[] getStringArray() {
+        return new String[]{"beginner", "easy", "intermediate", "moderate", "advanced", "challenging"};
+    }
+
+    @NonNull
     public static DifficultyLevel getRandomDifficultyLevel(
             Random random
     ){

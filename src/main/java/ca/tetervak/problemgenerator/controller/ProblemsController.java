@@ -9,11 +9,13 @@ import ca.tetervak.problemgenerator.model.RequestForm;
 import ca.tetervak.problemgenerator.repository.AlgebraProblemRepository;
 import jakarta.servlet.http.Cookie;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.validation.Valid;
 import org.jspecify.annotations.NonNull;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
+
 import java.util.List;
 
 @Controller
@@ -24,7 +26,7 @@ public class ProblemsController {
 
     ProblemsController(
             @NonNull AlgebraProblemRepository problemRepository
-    ){
+    ) {
         this.problemRepository = problemRepository;
     }
 
@@ -39,14 +41,12 @@ public class ProblemsController {
             Model model
     ) {
         model.addAttribute("requestForm", requestForm);
-        String[] levels = {"beginner", "easy", "intermediate", "moderate", "advanced", "challenging"};
-        model.addAttribute("levels", levels);
         return "problems/form/form-index";
     }
 
     @GetMapping("/form/confirm")
     public String problemRequestFormConfirm(
-            @ModelAttribute RequestForm requestForm,
+            @Valid @ModelAttribute RequestForm requestForm,
             Model model
     ) {
         model.addAttribute("requestForm", requestForm);
@@ -64,8 +64,6 @@ public class ProblemsController {
     ) {
         ModelAndView mav = new ModelAndView("problems/categories/specific-category");
         mav.addObject("category", category);
-        String[] levels = {"beginner", "easy", "intermediate", "moderate", "advanced", "challenging"};
-        mav.addObject("levels", levels);
         CountsByLevels countsByLevels = problemRepository.getAlgebraProblemCountsByLevels(
                 AlgebraProblemCategory.fromString(category)
         );
@@ -79,6 +77,9 @@ public class ProblemsController {
             @RequestParam(defaultValue = "beginner") String level,
             @RequestParam(defaultValue = "5") int number
     ) {
+        if (number < 1 || number > 10) {
+            throw new IllegalArgumentException("Number must be between 1 and 10");
+        }
         ModelAndView mav = new ModelAndView("problems/generator/generated-problems");
         mav.addObject("category", category);
         mav.addObject("level", level);
@@ -101,20 +102,29 @@ public class ProblemsController {
             Model model,
             HttpServletResponse response
     ) {
-        if(compareForm.getNumber() == 0){
-            compareForm.setNumber(number);
+        if (compareForm.getNumber() >= 1 && compareForm.getNumber() <= 10) {
+            if (compareForm.getNumber() != number) {
+                Cookie cookie = new Cookie(
+                        "compare-number", String.valueOf(compareForm.getNumber()));
+                cookie.setMaxAge(60 * 60 * 24);
+                cookie.setPath("/problems/categories/");
+                cookie.setHttpOnly(true);
+                cookie.setAttribute("SameSite", "Strict");
+                response.addCookie(cookie);
+            }
         } else {
-            Cookie cookie = new Cookie(
-                    "compare-number", String.valueOf(compareForm.getNumber()));
-            cookie.setMaxAge(60 * 60 * 24);
-            cookie.setPath("/problems/categories/");
-            cookie.setHttpOnly(true);
-            cookie.setAttribute("SameSite", "Strict");
-            response.addCookie(cookie);
+            if(compareForm.getNumber() == 0) {
+                if (number >= 1 && number <= 10) {
+                    compareForm.setNumber(number);
+                } else {
+                    compareForm.setNumber(5);
+                }
+            } else {
+                throw new IllegalArgumentException("Number must be between 1 and 10");
+            }
         }
+
         model.addAttribute("compareForm", compareForm);
-        String[] levels = {"beginner", "easy", "intermediate", "moderate", "advanced", "challenging"};
-        model.addAttribute("levels", levels);
         List<AlgebraProblem> leftList = problemRepository.getRandomAlgebraProblemList(
                 AlgebraProblemCategory.fromString(category),
                 DifficultyLevel.fromString(compareForm.getLeft()),
@@ -133,6 +143,11 @@ public class ProblemsController {
 
     @ModelAttribute("categories")
     public String[] getCategories() {
-        return new String[]{"addition", "subtraction", "multiplication", "division"};
+        return AlgebraProblemCategory.getStringArray();
+    }
+
+    @ModelAttribute("levels")
+    public String[] getLevels() {
+        return DifficultyLevel.getStringArray();
     }
 }

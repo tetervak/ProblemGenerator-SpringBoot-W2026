@@ -1,0 +1,44 @@
+package ca.tetervak.problemgenerator.errors;
+
+import ca.tetervak.problemgenerator.domain.AlgebraProblemCategory;
+import ca.tetervak.problemgenerator.domain.DifficultyLevel;
+import ca.tetervak.problemgenerator.model.RequestForm;
+import org.springframework.web.bind.MethodArgumentNotValidException;
+import org.springframework.web.bind.annotation.ControllerAdvice;
+import org.springframework.web.bind.annotation.ExceptionHandler;
+import org.springframework.web.servlet.ModelAndView;
+
+@ControllerAdvice
+public class GlobalExceptionHandler {
+
+    @ExceptionHandler(IllegalArgumentException.class)
+    public ModelAndView handleIllegalArgumentException(IllegalArgumentException ex) {
+        ModelAndView mav = new ModelAndView("error/illegal-argument-error");
+        mav.addObject("message", ex.getMessage());
+        return mav;
+    }
+
+    @ExceptionHandler(MethodArgumentNotValidException.class)
+    public ModelAndView handleMethodArgumentNotValidException(MethodArgumentNotValidException ex) {
+
+        ModelAndView mav = new ModelAndView();
+        // Get the bound form object
+        Object target = ex.getBindingResult().getTarget();
+
+        if (target instanceof RequestForm) {
+            mav.setViewName("problems/form/form-index");
+            mav.addObject("requestForm", target);
+            mav.addObject("categories", AlgebraProblemCategory.getStringArray());
+            mav.addObject("levels", DifficultyLevel.getStringArray());
+        } else {
+            mav.setViewName("error/general-error");
+            mav.addObject("message", "Validation Failed");
+        }
+        // Add all errors to the model for Thymeleaf binding
+        mav.addAllObjects(ex.getBindingResult().getModel());
+
+        return mav;
+    }
+
+
+}

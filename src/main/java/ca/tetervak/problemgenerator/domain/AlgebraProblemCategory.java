@@ -32,6 +32,11 @@ public enum AlgebraProblemCategory {
     }
 
     @NonNull
+    public static String[] getStringArray() {
+        return new String[]{"addition", "subtraction", "multiplication", "division"};
+    }
+
+    @NonNull
     public static AlgebraProblemCategory getRandomAlgebraProblemCategory(
             Random random
     ){
