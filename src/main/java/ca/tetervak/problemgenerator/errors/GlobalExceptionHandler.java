@@ -40,5 +40,10 @@ public class GlobalExceptionHandler {
         return mav;
     }
 
-
+    @ExceptionHandler(Exception.class)
+    public ModelAndView handleException(Exception ex) {
+        ModelAndView mav = new ModelAndView("error/general-error");
+        mav.addObject("message", ex.getMessage());
+        return mav;
+    }
 }
