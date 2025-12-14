@@ -10,10 +10,10 @@
 <header th:replace="~{home/home-index :: home-header}">Some Header</header>
 <main>
     <p>
-        <a th:href="@{/home}">Home</a>&nbsp;&#10219&nbsp;
+        <a th:href="@{/index}" th:text="#{index-label}">Index</a>&nbsp;&#10219&nbsp;
         Error
     </p>
-  <h2>General Error</h2>
+  <h2>Error</h2>
   <!--/*@thymesVar id="message" type="String"*/-->
   <p class="error-message" th:text="${message}">Message</p>
 </main>

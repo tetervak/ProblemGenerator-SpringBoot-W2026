@@ -5,21 +5,21 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdn.simplecss.org/simple.min.css">
     <link rel="stylesheet" th:href="@{/css/custom.css}" href="../../../static/css/custom.css">
-    <title>Categories</title>
+    <title th:text="#{categories-label}">Categories</title>
 </head>
 <body>
 <header th:replace="~{problems/problems-index :: problems-header}"></header>
 <main>
     <p>
-        <a th:href="@{/home}">Home</a>&nbsp;&#10219&nbsp;
-        <a th:href="@{/problems}">Problems</a>&nbsp;&#10219&nbsp;
-        Categories
+        <a th:href="@{/index}" th:text="#{index-label}">Index</a>&nbsp;&#10219&nbsp;
+        <a th:href="@{/problems}" th:text="#{problems-label}">Problems</a>&nbsp;&#10219&nbsp;
+        <th:block th:text="#{categories-label}">Categories</th:block>
     </p>
-    <h2>Categories</h2>
+    <h2 th:text="#{categories-label}">Categories</h2>
     <ol>
         <li th:each="category: ${categories}">
             <a th:href="@{/problems/categories/{c}(c=${category})}"
-               th:text="${#strings.capitalize(category)}">Category</a>
+               th:text="#{'category-label.' + ${category}}">Specific Category</a>
         </li>
     </ol>
 </main>

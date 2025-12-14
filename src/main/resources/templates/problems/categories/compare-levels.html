@@ -5,85 +5,98 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdn.simplecss.org/simple.min.css">
     <link rel="stylesheet" th:href="@{/css/custom.css}" href="../../../static/css/custom.css">
-    <title>Problem Request Form</title>
+    <title th:text="#{compare-levels}">Compare Levels</title>
 </head>
 <body>
 <header th:replace="~{problems/problems-index :: problems-header}"></header>
 <main th:object="${compareForm}">
     <p>
-        <a th:href="@{/home}">Home</a>&nbsp;&#10219&nbsp;
-        <a th:href="@{/problems}">Problems</a>&nbsp;&#10219&nbsp;
-        <a th:href="@{/problems/categories}">Categories</a>&nbsp;&#10219&nbsp;
+        <a th:href="@{/index}" th:text="#{index-label}">Index</a>&nbsp;&#10219&nbsp;
+        <a th:href="@{/problems}" th:text="#{problems-label}">Problems</a>&nbsp;&#10219&nbsp;
+        <a th:href="@{/problems/categories}" th:text="#{categories-label}">Categories</a>&nbsp;&#10219&nbsp;
         <a th:href="@{/problems/categories/{c}(c=${category})}"
-                th:text="${#strings.capitalize(category)}">Specific Category</a>&nbsp;&#10219&nbsp;
-        Compare Levels
+                th:text="#{'category-label.' + ${category}}">Specific Category</a>&nbsp;&#10219&nbsp;
+        <th:block th:text="#{compare-levels}">Compare Levels</th:block>
     </p>
     <h2>
-        <th:block th:text="${#strings.capitalize(category)}">Specific Category</th:block>&nbsp;Levels
+        <th:block th:text="#{'category-label.' + ${category}}">Specific Category</th:block>:&nbsp;
+        <th:block th:text="#{compare-levels}">Compare Levels</th:block>
     </h2>
     <form th:action="@{/problems/categories/{c}/compare-levels(c=${category})}"
           method="get">
         <p>
-            <label>Level 1&nbsp;
+            <label><th:block th:text="#{level-label}">Level</th:block> - 1:&nbsp;
                 <select name="firstLevel" th:field="${compareForm.left}">
                     <option th:each="level: ${levels}"
                             th:value="${level}"
-                            th:text="${#strings.capitalize(level)}">Difficulty Level</option>
-                </select></label>
+                            th:text="#{'difficulty-label.' + ${level}}">
+                        Difficulty Level
+                    </option>
+                </select>
+            </label>
         </p>
         <p>
-            <label>Level 2&nbsp;
+            <label><th:block th:text="#{level-label}">Level</th:block> - 2:&nbsp;
                 <select name="secondLevel" th:field="${compareForm.right}">
                     <option th:each="level: ${levels}"
                             th:value="${level}"
-                            th:text="${#strings.capitalize(level)}">Difficulty Level</option>
-                </select></label>
+                            th:text="#{'difficulty-label.' + ${level}}">
+                        Difficulty Level
+                    </option>
+                </select>
+            </label>
         </p>
         <p>
-            <label>Number&nbsp;
+            <label><th:block th:text="#{number-of-problems}">Number of Problems</th:block>:&nbsp;
                 <input type="number" name="number" th:field="${compareForm.number}" min="1" max="10">
             </label>
         </p>
         <p>
-            <button type="submit">Compare Levels</button>
+            <button type="submit" th:text="#{compare-levels}">Compare Levels</button>
         </p>
     </form>
     <article style="display: flex; flex-direction: row; flex-wrap:wrap; justify-content: space-around">
-        <div>
-            <h4>Level 1: <th:block th:text="${#strings.capitalize(compareForm.getLeft)}">Level</th:block></h4>
-            <table>
+        <div style="display: flex; flex-direction: column; align-items: center">
+            <h4>
+                <th:block th:text="#{level-label}">Level</th:block> - 1:&nbsp;
+                <th:block th:text="#{'difficulty-label.' + ${compareForm.left}}">Level</th:block>
+            </h4>
+            <table style="margin-top: 0">
                 <thead>
-                <tr>
-                    <th>Count</th>
-                    <th>Problem</th>
-                    <th>Answer</th>
-                </tr>
+                    <tr>
+                        <th th:text="#{count-label}">Count</th>
+                        <th th:text="#{problem-label}">Problem</th>
+                        <th th:text="#{answer-label}">Answer</th>
+                    </tr>
                 </thead>
                 <tbody>
-                <tr th:each="problem, status : ${leftList}">
-                    <td th:text="${status.count}">Count</td>
-                    <td th:text="${problem.text}">Problem</td>
-                    <td th:text="${problem.answer}">Answer</td>
-                </tr>
+                    <tr th:each="problem, status : ${leftList}">
+                        <td th:text="${status.count}">Count</td>
+                        <td th:text="${problem.text}">Problem</td>
+                        <td th:text="${problem.answer}">Answer</td>
+                    </tr>
                 </tbody>
             </table>
         </div>
-        <div>
-            <h4>Level 2: <th:block th:text="${#strings.capitalize(compareForm.getRight)}">Level</th:block></h4>
-            <table>
+        <div style="display: flex; flex-direction: column; align-items: center">
+            <h4>
+                <th:block th:text="#{level-label}">Level</th:block> - 2:&nbsp;
+                <th:block th:text="#{'difficulty-label.' + ${compareForm.right}}">Level</th:block>
+            </h4>
+            <table style="margin-top: 0">
                 <thead>
-                <tr>
-                    <th>Count</th>
-                    <th>Problem</th>
-                    <th>Answer</th>
-                </tr>
+                    <tr>
+                        <th th:text="#{count-label}">Count</th>
+                        <th th:text="#{problem-label}">Problem</th>
+                        <th th:text="#{answer-label}">Answer</th>
+                    </tr>
                 </thead>
                 <tbody>
-                <tr th:each="problem, status : ${rightList}">
-                    <td th:text="${status.count}">Count</td>
-                    <td th:text="${problem.text}">Problem</td>
-                    <td th:text="${problem.answer}">Answer</td>
-                </tr>
+                    <tr th:each="problem, status : ${rightList}">
+                        <td th:text="${status.count}">Count</td>
+                        <td th:text="${problem.text}">Problem</td>
+                        <td th:text="${problem.answer}">Answer</td>
+                    </tr>
                 </tbody>
             </table>
         </div>

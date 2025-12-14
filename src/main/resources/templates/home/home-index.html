@@ -5,28 +5,50 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdn.simplecss.org/simple.min.css">
     <link rel="stylesheet" th:href="@{/css/custom.css}" href="../../static/css/custom.css">
-    <title>Home</title>
+    <title th:text="#{index-label}">Index</title>
 </head>
 <body>
 <header th:fragment="home-header">
-    <h1>Problem Generator</h1>
+    <div class="row-in-header">
+        <div class="spacer-in-header"></div>
+        <h1 th:text="${#messages.msg('app-name')}">Program Name</h1>
+        <div th:fragment="language-bar" class="language-bar-container">
+            <div class="language-bar">
+                <th:block th:each="langCode : ${#strings.arraySplit(#messages.msg('supported.locales'), ',')}">
+                    <a th:href="${@linkHelper.withLang(langCode)}"
+                       class="lang-link"
+                       th:classappend="${#locale.language == langCode} ? 'active-lang' : ''"
+                       th:text="${#strings.toUpperCase(langCode)}">
+                        EN
+                    </a>
+                </th:block>
+            </div>
+        </div>
+    </div>
 </header>
 <main>
-    <h2>Home</h2>
+    <h2 th:text="#{index-label}">Index</h2>
     <ul>
         <li>
-            <a th:href="@{/problems}">Problems</a>
+            <a th:href="@{/problems}"
+               th:text="#{problems-label}">Problems</a>
             <ul>
                 <li>
-                    <a th:href="@{/problems/categories}">Categories</a>
+                    <a th:href="@{/problems/categories}"
+                       th:text="#{categories-label}">Categories</a>
                     <ol>
-                        <li><a th:href="@{/problems/categories/addition}">Addition</a></li>
-                        <li><a th:href="@{/problems/categories/subtraction}">Subtraction</a></li>
-                        <li><a th:href="@{/problems/categories/multiplication}">Multiplication</a></li>
-                        <li><a th:href="@{/problems/categories/division}">Division</a></li>
+                        <li><a th:href="@{/problems/categories/addition}"
+                               th:text="#{'category-label.addition'}">Addition</a></li>
+                        <li><a th:href="@{/problems/categories/subtraction}"
+                               th:text="#{'category-label.subtraction'}">Subtraction</a></li>
+                        <li><a th:href="@{/problems/categories/multiplication}"
+                               th:text="#{'category-label.multiplication'}">Multiplication</a></li>
+                        <li><a th:href="@{/problems/categories/division}"
+                               th:text="#{'category-label.division'}">Division</a></li>
                     </ol>
                 </li>
-                <li><a th:href="@{/problems/form}">Request Form</a></li>
+                <li><a th:href="@{/problems/form}"
+                       th:text="#{request-form}">Request Form</a></li>
             </ul>
         </li>
         <li>

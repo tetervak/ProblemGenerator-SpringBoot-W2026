@@ -1,4 +1,4 @@
-package ca.tetervak.problemgenerator;
+package ca.tetervak.problemgenerator.config;
 
 import ca.tetervak.problemgenerator.domain.AlgebraProblemFactory;
 import ca.tetervak.problemgenerator.domain.AlgebraProblemListFactory;
@@ -8,7 +8,7 @@ import org.springframework.context.annotation.Configuration;
 import java.util.Random;
 
 @Configuration
-public class ProblemGeneratorConfiguration {
+public class ProblemGeneratorConfig {
 
     @Bean
     Random random() {

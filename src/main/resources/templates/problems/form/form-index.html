@@ -5,22 +5,22 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdn.simplecss.org/simple.min.css">
     <link rel="stylesheet" th:href="@{/css/custom.css}" href="../../../static/css/custom.css">
-    <title>Problem Request Form</title>
+    <title th:text="#{request-form}">Request Form</title>
 </head>
 <body>
 <header th:replace="~{problems/problems-index :: problems-header}"></header>
 <main>
     <p>
-        <a th:href="@{/home}">Home</a>&nbsp;&#10219&nbsp;
-        <a th:href="@{/problems}">Problems</a>&nbsp;&#10219&nbsp;
-        Request Form
+        <a th:href="@{/index}" th:text="#{index-label}">Index</a>&nbsp;&#10219&nbsp;
+        <a th:href="@{/problems}" th:text="#{problems-label}">Problems</a>&nbsp;&#10219&nbsp;
+        <th:block th:text="#{request-form}">Request Form</th:block>
     </p>
-    <h2>Request Form</h2>
+    <h2 th:text="#{request-form}">Request Form</h2>
     <form th:action="@{/problems/form/confirm}"
           th:object="${requestForm}"
           method="get">
         <p>
-            <label>Number of Problems&nbsp;
+            <label><th:block th:text="#{number-of-problems}">Number of Problems</th:block>:&nbsp;
                 <input type="number"
                        name="number"
                        th:field="${requestForm.number}"
@@ -30,29 +30,30 @@
                   th:if="${#fields.hasErrors('number')}" th:errors="${requestForm.number}">Number Error</span>
         </p>
         <p>
+            <label style="margin-bottom: 0.5em"><th:block th:text="#{category-label}">Category</th:block>:</label>
             <th:block th:each="category: ${categories}">
-                <label><input type="radio" name="category"
+                <label style="margin-left: 1em"><input type="radio" name="category"
                               th:value="${category}" th:field="${requestForm.category}">&nbsp;
-                    <th:block th:text="${#strings.capitalize(category)}">Specific Category</th:block></label>
+                    <th:block th:text="#{'category-label.' + ${category}}">Specific Category</th:block></label>
             </th:block>
             <span class="error-message"
                   th:if="${#fields.hasErrors('category')}" th:errors="${requestForm.category}">Category Error</span>
         </p>
         <p>
             <label>
-                Difficulty&nbsp;
+                <th:block th:text="#{difficulty-level}">Difficulty Level</th:block>:&nbsp;
                 <select name="level" th:field="${requestForm.level}">
-                    <option th:value="select" style="color:red;">--Select--</option>
+                    <option th:value="unknown">--<th:block th:text="#{select-label}">Select</th:block>--&nbsp;</option>
                     <option th:each="level: ${levels}"
                             th:value="${level}"
-                            th:text="${#strings.capitalize(level)}">Difficulty Level</option>
+                            th:text="#{'difficulty-label.' + ${level}}">Difficulty Level</option>
                 </select>
             </label>
             <span class="error-message"
                   th:if="${#fields.hasErrors('level')}" th:errors="${requestForm.level}">Level Error</span>
         </p>
         <p>
-            <button type="submit">Submit Request</button>
+            <button type="submit" th:text="#{submit-request}">Submit Request</button>
         </p>
     </form>
 </main>

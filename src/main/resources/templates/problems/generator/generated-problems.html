@@ -5,53 +5,59 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdn.simplecss.org/simple.min.css">
     <link rel="stylesheet" th:href="@{/css/custom.css}" href="../../../static/css/custom.css">
-    <title>Generated Problems</title>
+    <title th:text="#{generated-problems}">Generated Problems</title>
 </head>
 <body>
 <header th:replace="~{problems/problems-index :: problems-header}"></header>
 <main>
     <p>
-        <a th:href="@{/home}">Home</a>&nbsp;&#10219&nbsp;
-        <a th:href="@{/problems}">Problems</a>&nbsp;&#10219&nbsp;
-        <a th:href="@{/problems/categories}">Categories</a>&nbsp;&#10219&nbsp;
+        <a th:href="@{/index}" th:text="#{index-label}">Index</a>&nbsp;&#10219&nbsp;
+        <a th:href="@{/problems}"
+           th:text="#{problems-label}">Problems</a>&nbsp;&#10219&nbsp;
+        <a th:href="@{/problems/categories}"
+           th:text="#{categories-label}">Categories</a>&nbsp;&#10219&nbsp;
         <a th:href="@{/problems/categories/{c}(c=${category})}"
-                th:text="${#strings.capitalize(category)}">Specific Category</a>&nbsp;&#10219&nbsp;
-        Generated Problems
+           th:text="#{'category-label.' + ${category}}">Specific Category</a>&nbsp;&#10219&nbsp;
+        <th:block th:text="#{generated-problems}">Generated Problems</th:block>
     </p>
-    <h2>Generated Problems</h2>
+    <h2 th:text="#{generated-problems}">Generated Problems</h2>
     <ul>
         <li>
-            Category: <span th:text="${#strings.capitalize(category)}" class="value">Category</span>
+            <th:block th:text="#{category-label}">Category</th:block>: <span th:text="#{'category-label.' + ${category}}" class="value">Category</span>
         </li>
         <li>
-            Difficulty Level: <span th:text="${#strings.capitalize(level)}" class="value">Level</span>
+            <th:block th:text="#{difficulty-level}">Difficulty Level</th:block>:
+            <span th:text="#{'difficulty-label.' + ${level}}" class="value">Level</span>
         </li>
         <li>
-            Number of Problems: <span th:text="${problems.size()}" class="value">Number</span>
+            <th:block th:text="#{number-of-problems}">Number of Problems</th:block>:
+            <span th:text="${problems.size()}" class="value">Number</span>
         </li>
     </ul>
-    <table>
+    <div style="margin-left: 3em; width: fit-content; display: flex; flex-direction: column; align-items: center">
+    <table style="margin-top: 0">
         <thead>
-            <tr>
-                <th>Count</th>
-                <th>Problem</th>
-                <th>Answer</th>
-            </tr>
+        <tr>
+            <th th:text="#{count-label}">Count</th>
+            <th th:text="#{problem-label}">Problem</th>
+            <th th:text="#{answer-label}">Answer</th>
+        </tr>
         </thead>
         <tbody>
-            <tr th:each="problem, status : ${problems}">
-                <td th:text="${status.count}">Count</td>
-                <td th:text="${problem.text}">Problem</td>
-                <td th:text="${problem.answer}">Answer</td>
-            </tr>
+        <tr th:each="problem, status : ${problems}">
+            <td th:text="${status.count}">Count</td>
+            <td th:text="${problem.text}">Problem</td>
+            <td th:text="${problem.answer}">Answer</td>
+        </tr>
         </tbody>
     </table>
     <form th:action="@{/problems/generator}" method="get">
         <input type="hidden" name="category" th:value="${category}">
         <input type="hidden" name="level" th:value="${level}">
         <input type="hidden" name="number" th:value="${problems.size()}">
-        <button type="submit">Regenerate Problems</button>
+        <button type="submit" th:text="#{repeat-generation}">Repeat Generation</button>
     </form>
+    </div>
 </main>
 <footer th:replace="~{home/home-index :: course-footer}">Some Footer</footer>
 </body>

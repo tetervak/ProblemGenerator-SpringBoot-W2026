@@ -5,34 +5,37 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdn.simplecss.org/simple.min.css">
     <link rel="stylesheet" th:href="@{/css/custom.css}" href="../../../static/css/custom.css">
-    <title th:text="${#strings.capitalize(category)}">Specific Category</title>
+    <title th:text="#{'category-label.' + ${category}}">Specific Category</title>
 </head>
 <body>
 <header th:replace="~{problems/problems-index :: problems-header}"></header>
 <main>
     <p>
-        <a th:href="@{/home}">Home</a>&nbsp;&#10219&nbsp;
-        <a th:href="@{/problems}">Problems</a>&nbsp;&#10219&nbsp;
-        <a th:href="@{/problems/categories}">Categories</a>&nbsp;&#10219&nbsp;
-        <span th:text="${#strings.capitalize(category)}">Specific Category</span>
+        <a th:href="@{/index}" th:text="#{index-label}">Index</a>&nbsp;&#10219&nbsp;
+        <a th:href="@{/problems}" th:text="#{problems-label}">Problems</a>&nbsp;&#10219&nbsp;
+        <a th:href="@{/problems/categories}"
+           th:text="#{categories-label}">Categories</a>&nbsp;&#10219&nbsp;
+        <span th:text="#{'category-label.' + ${category}}">Specific Category</span>
     </p>
-    <h2 th:text="${#strings.capitalize(category)}">Specific Category</h2>
+    <h2 th:text="#{'category-label.' + ${category}}">Specific Category</h2>
     <p>
-        <a th:href="@{/problems/categories/{c}/compare-levels(c=${category})}" style="font-size: x-large">
+        <a th:href="@{/problems/categories/{c}/compare-levels(c=${category})}"
+           th:text="#{compare-difficulty-levels}"
+           style="font-size: x-large">
             Compare Difficulty Levels
         </a>
     </p>
     <table>
         <thead>
         <tr>
-            <th>Difficulty Level</th>
-            <th>Number of Problems</th>
-            <th>Totals</th>
+            <th th:text="#{difficulty-level}">Difficulty Level</th>
+            <th th:text="#{number-of-problems}">Number of Problems</th>
+            <th th:text="#{totals-label}">Totals</th>
         </tr>
         </thead>
         <tbody th:with="numbers = ${#numbers.sequence(1, 10, 1)}">
             <tr th:each="level : ${levels}">
-                <td th:text="${#strings.capitalize(level)}">Level</td>
+                <td th:text="#{'difficulty-label.' + ${level}}">Level</td>
                 <td>
                     <th:block th:each="number: ${numbers}">
                         <a th:href="@{/problems/generator(category=${category}, level=${level}, number=${number})}"
@@ -44,7 +47,10 @@
         </tbody>
     </table>
     <p>
-        <label>Total:<span th:text="${countsByLevels.total}" class="value">Total Problems</span> problems</label>
+        <label>
+            <th:block th:text="#{total-label}">Total Problems</th:block>:
+            <span th:text="${countsByLevels.total}" class="value">Total Problems</span>
+        </label>
     </p>
 </main>
 <footer th:replace="~{home/home-index :: course-footer}">Some Footer</footer>

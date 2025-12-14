@@ -17,9 +17,9 @@ public class RequestForm {
     @Max(value = 10, message = "Number must be at most 10")
     private int number = 5;
 
-    @ValidCategory
-    private String category = "select";
+    @ValidCategory(message = "{category.unknown}")
+    private String category = "unknown";
 
-    @ValidLevel
-    private String level = "select";
+    @ValidLevel(message = "{level.unknown}")
+    private String level = "unknown";
 }

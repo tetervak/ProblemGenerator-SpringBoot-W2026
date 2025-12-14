@@ -5,17 +5,31 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdn.simplecss.org/simple.min.css">
     <link rel="stylesheet" th:href="@{/css/custom.css}" href="../../static/css/custom.css">
-    <title>About</title>
+    <title>Illegal Argument</title>
 </head>
 <body>
 <header th:replace="~{home/home-index :: home-header}">Some Header</header>
 <main>
     <p>
         <a th:href="@{/index}" th:text="#{index-label}">Index</a>&nbsp;&#10219&nbsp;
-        About
+        <th:block th:text="#{error-label}">Error</th:block>&nbsp;404
     </p>
-    <h2>About Page</h2>
-    <p>This is the about page of the problem generator application.</p>
+    <h2><th:block th:text="#{error-label}">Error</th:block>&nbsp;404</h2>
+    <p class="error-message" th:text="#{error-404-message}">
+        The page is not found.
+    </p>
+
+    <ul>
+        <li>Method:
+            <!--/*@thymesVar id="method" type="String"*/-->
+            <span th:text="${method}" class="value">Method</span>
+        </li>
+        <li>Path:
+            <!--/*@thymesVar id="path" type="String"*/-->
+            <span th:text="${path}" class="value">Path</span>
+        </li>
+    </ul>
+
 </main>
 <footer th:replace="~{home/home-index :: course-footer}">Some Footer</footer>
 </body>
