@@ -1,0 +1,43 @@
+body>footer{
+    padding-top: 0;
+}
+
+footer{
+    font-style: italic;
+    width: 100%;
+}
+
+label{
+    font-size: x-large;
+    width: fit-content;
+}
+
+li{
+    font-size: x-large;
+}
+
+.value{
+    font-style: italic;
+    margin-left: 1rem;
+}
+
+.error-message{
+    color: crimson;
+    font-style: italic;
+    font-size: x-large;
+}
+
+/* Language Selection Bar */
+.lang-link {
+    text-decoration: none;
+    margin: 0 5px;
+    padding: 2px 5px;
+}
+
+.lang-link.active-lang {
+    font-weight: bold;
+    color: black;
+    border-bottom: 2px solid blue; /* Visual indicator */
+    pointer-events: none; /* Disable clicking the current language */
+}
+

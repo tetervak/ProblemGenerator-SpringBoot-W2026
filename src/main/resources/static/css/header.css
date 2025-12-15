@@ -1,0 +1,37 @@
+header nav a{
+    border-bottom-width: medium;
+    border-right-width: medium;
+}
+
+body>header{
+    position: relative;
+    display: block;
+    padding: 0;
+}
+
+div.row-in-header{
+     display: flex;
+     justify-content: space-between;
+     align-items: center;
+ }
+
+div.spacer-in-header{
+    flex: 1;
+}
+
+div.language-bar-container{
+    flex: 1; height: fit-content;
+}
+
+div.language-bar{
+    width: fit-content;
+    justify-self: right;
+    margin: 15px;
+    font-size: small;
+    font-weight: bold;
+    padding: 5px;
+    border-color: darkgray;
+    border-style: solid;
+    border-width: thin;
+    border-radius: 5px;
+}
