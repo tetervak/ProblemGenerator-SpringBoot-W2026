@@ -6,17 +6,27 @@
     <link rel="stylesheet" href="https://cdn.simplecss.org/simple.min.css">
     <link rel="stylesheet" th:href="@{/css/main.css}" href="../../static/css/main.css">
     <link rel="stylesheet" th:href="@{/css/header.css}" href="../../static/css/header.css">
-    <title>General Error</title>
+    <title th:text="#{error-label}">Error</title>
 </head>
 <header th:replace="~{home/home-index :: home-header}">Some Header</header>
 <main>
     <p>
         <a th:href="@{/index}" th:text="#{index-label}">Index</a>&nbsp;&#10219&nbsp;
-        Error
+        <th:block th:text="#{error-label}">Error</th:block>
     </p>
-  <h2>Error</h2>
-  <!--/*@thymesVar id="message" type="String"*/-->
-  <p class="error-message" th:text="${message}">Message</p>
+  <h2 th:text="#{error-label}">Error</h2>
+    <ul>
+        <li class="error-message">
+            Exception:
+            <!--/*@thymesVar id="exception" type="String"*/-->
+            <span th:text="${exception}" class="value">Exception</span>
+        </li>
+        <li>
+            Message:
+            <!--/*@thymesVar id="message" type="String"*/-->
+            <span th:text="${message}" class="value">Message</span>
+        </li>
+    </ul>
 </main>
 <footer th:replace="~{home/home-index :: course-footer}">Some Footer</footer>
 </html>
