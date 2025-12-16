@@ -6,17 +6,17 @@
     <link rel="stylesheet" href="https://cdn.simplecss.org/simple.min.css">
     <link rel="stylesheet" th:href="@{/css/main.css}" href="../../static/css/main.css">
     <link rel="stylesheet" th:href="@{/css/header.css}" href="../../static/css/header.css">
-    <title>About the program</title>
+    <title>Про програму</title>
 </head>
 <body>
 <header th:replace="~{home/home-index :: home-header}">Some Header</header>
 <main>
     <p>
-        <a th:href="@{/index}" th:text="#{index-label}">Index</a>&nbsp;&#10219&nbsp;
-        About the program
+        <a th:href="@{/index}">Індекс</a>&nbsp;&#10219&nbsp;
+        Про програму
     </p>
-    <h2>About the program</h2>
-    <p>The program was developed as an example for a programming course.</p>
+    <h2>Про програму</h2>
+    <p>Програма була розроблена як приклад для курсу програмування.</p>
 </main>
 <footer th:replace="~{home/home-index :: course-footer}">Some Footer</footer>
 </body>

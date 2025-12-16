@@ -13,8 +13,8 @@ import lombok.Setter;
 @NoArgsConstructor
 public class RequestForm {
 
-    @Min(value = 1, message = "Number must be at least 1")
-    @Max(value = 10, message = "Number must be at most 10")
+    @Min(value = 1, message = "{number-min-message}")
+    @Max(value = 10, message = "{number-max-message}")
     private int number = 5;
 
     @ValidCategory(message = "{category.unknown}")
