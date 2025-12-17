@@ -58,8 +58,14 @@
     </ul>
 </main>
 <footer th:fragment="course-footer">
-    <p>PROG27545 / Web Application Design and Implementation — Sheridan College,
-        Alexander Tetervak</p>
+    <p>
+        PROG27545 / Web Application Design and Implementation — Sheridan College,
+        <th:block th:switch="${#locale.language}">
+            <span th:case="'uk'">Олександр Тетервак</span>
+            <span th:case="'ru'">Александр Тетервак</span>
+            <span th:case="*">Alexander Tetervak</span>
+        </th:block>
+    </p>
 </footer>
 </body>
 </html>

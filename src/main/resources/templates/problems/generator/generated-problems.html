@@ -6,6 +6,7 @@
     <link rel="stylesheet" href="https://cdn.simplecss.org/simple.min.css">
     <link rel="stylesheet" th:href="@{/css/main.css}" href="../../../static/css/main.css">
     <link rel="stylesheet" th:href="@{/css/header.css}" href="../../../static/css/header.css">
+    <link rel="stylesheet" th:href="@{/css/generated-problems.css}" href="../../../static/css/generated-problems.css">
     <title th:text="#{generated-problems}">Generated Problems</title>
 </head>
 <body>
@@ -35,8 +36,8 @@
             <span th:text="${problems.size()}" class="value">Number</span>
         </li>
     </ul>
-    <div style="margin-left: 3em; width: fit-content; display: flex; flex-direction: column; align-items: center">
-    <table style="margin-top: 0">
+    <div class="table-and-form-container">
+    <table>
         <thead>
         <tr>
             <th th:text="#{count-label}">Count</th>

@@ -1,0 +1,16 @@
+article.compare-output-container{
+    display: flex;
+    flex-direction: row;
+    flex-wrap:wrap;
+    justify-content: space-around;
+}
+
+div.header-and-table-container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+div.header-and-table-container>table{
+    margin-top: 0;
+}

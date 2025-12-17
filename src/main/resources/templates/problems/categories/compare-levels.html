@@ -6,6 +6,7 @@
     <link rel="stylesheet" href="https://cdn.simplecss.org/simple.min.css">
     <link rel="stylesheet" th:href="@{/css/main.css}" href="../../../static/css/main.css">
     <link rel="stylesheet" th:href="@{/css/header.css}" href="../../../static/css/header.css">
+    <link rel="stylesheet" th:href="@{/css/compare-levels.css}" href="../../../static/css/compare-levels.css">
     <title th:text="#{compare-levels}">Compare Levels</title>
 </head>
 <body>
@@ -56,13 +57,13 @@
             <button type="submit" th:text="#{compare-levels}">Compare Levels</button>
         </p>
     </form>
-    <article style="display: flex; flex-direction: row; flex-wrap:wrap; justify-content: space-around">
-        <div style="display: flex; flex-direction: column; align-items: center">
+    <article class="compare-output-container">
+        <div class="header-and-table-container">
             <h4>
                 <th:block th:text="#{level-label}">Level</th:block> - 1:&nbsp;
                 <th:block th:text="#{'difficulty-label.' + ${compareForm.left}}">Level</th:block>
             </h4>
-            <table style="margin-top: 0">
+            <table>
                 <thead>
                     <tr>
                         <th th:text="#{count-label}">Count</th>
@@ -79,12 +80,12 @@
                 </tbody>
             </table>
         </div>
-        <div style="display: flex; flex-direction: column; align-items: center">
+        <div class="header-and-table-container">
             <h4>
                 <th:block th:text="#{level-label}">Level</th:block> - 2:&nbsp;
                 <th:block th:text="#{'difficulty-label.' + ${compareForm.right}}">Level</th:block>
             </h4>
-            <table style="margin-top: 0">
+            <table>
                 <thead>
                     <tr>
                         <th th:text="#{count-label}">Count</th>
