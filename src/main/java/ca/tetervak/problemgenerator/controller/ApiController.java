@@ -1,18 +1,13 @@
 package ca.tetervak.problemgenerator.controller;
 
+import ca.tetervak.problemgenerator.domain.*;
 import ca.tetervak.problemgenerator.model.AlgebraProblemDto;
-import ca.tetervak.problemgenerator.domain.AlgebraProblem;
-import ca.tetervak.problemgenerator.domain.AlgebraProblemCategory;
-import ca.tetervak.problemgenerator.domain.DifficultyLevel;
 import ca.tetervak.problemgenerator.repository.AlgebraProblemRepository;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
 import io.swagger.v3.oas.annotations.Parameters;
 import io.swagger.v3.oas.annotations.tags.Tag;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -66,6 +61,30 @@ public class ApiController {
                 );
 
         return list.stream().map(AlgebraProblemDto::new).toList();
+    }
+
+    @GetMapping(value = "/counts", produces = "application/json")
+    @Operation(summary = "Get counts of algebra problems by categories and levels")
+    public CountsByCategoriesAndLevels getAlgebraProblemCounts() {
+        return problemRepository.getAlgebraProblemCounts();
+    }
+
+    @GetMapping(value = "/counts/{category}", produces = "application/json")
+    @Operation(summary = "Get counts of algebra problems for a specific category")
+    @Parameters({
+            @Parameter(
+                    name = "category",
+                    description =
+                            "The category of algebra problems: addition, subtraction, multiplication, or division",
+                    example = "multiplication"
+            )
+    })
+    public CountsByLevels getAlgebraProblemCountsForCategory(
+            @PathVariable String category
+    ){
+        return problemRepository.getAlgebraProblemCountsForCategory(
+                AlgebraProblemCategory.fromString(category)
+        );
     }
 
 }

@@ -16,7 +16,6 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
-import java.time.Duration;
 import java.util.List;
 
 @Controller
@@ -65,7 +64,7 @@ public class ProblemsController {
     ) {
         ModelAndView mav = new ModelAndView("problems/categories/specific-category");
         mav.addObject("category", category);
-        CountsByLevels countsByLevels = problemRepository.getAlgebraProblemCountsByLevels(
+        CountsByLevels countsByLevels = problemRepository.getAlgebraProblemCountsForCategory(
                 AlgebraProblemCategory.fromString(category)
         );
         mav.addObject("countsByLevels", countsByLevels);

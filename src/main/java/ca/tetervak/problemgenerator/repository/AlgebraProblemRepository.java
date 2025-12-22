@@ -8,33 +8,11 @@ import java.util.List;
 public interface AlgebraProblemRepository {
 
     @NonNull
-    AlgebraProblem getRandomAlgebraProblem(
-            @NonNull AlgebraProblemCategory category,
-            @NonNull DifficultyLevel difficultyLevel
-    );
+    CountsByCategoriesAndLevels getAlgebraProblemCounts();
 
     @NonNull
-    AlgebraProblem getRandomAlgebraProblem(
+    CountsByLevels getAlgebraProblemCountsForCategory(
             @NonNull AlgebraProblemCategory category
-    );
-
-    @NonNull
-    AlgebraProblem getRandomAlgebraProblem();
-
-    int getAlgebraProblemTotalCount();
-
-    int getAlgebraProblemCountByCategory(
-            @NonNull AlgebraProblemCategory category
-    );
-
-    @NonNull
-    CountsByLevels getAlgebraProblemCountsByLevels(
-            @NonNull AlgebraProblemCategory category
-    );
-
-    int getAlgebraProblemCountByCategoryAndDifficultyLevel(
-            @NonNull AlgebraProblemCategory category,
-            @NonNull DifficultyLevel difficultyLevel
     );
 
     @NonNull List<AlgebraProblem> getRandomAlgebraProblemList(
