@@ -11,7 +11,7 @@ public interface AlgebraProblemRepository {
     CountsByCategoriesAndLevels getAlgebraProblemCounts();
 
     @NonNull
-    CountsByLevels getAlgebraProblemCountsForCategory(
+    CountsByLevels getAlgebraProblemCountsByCategory(
             @NonNull AlgebraProblemCategory category
     );
 

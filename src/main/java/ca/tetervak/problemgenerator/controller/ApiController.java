@@ -69,7 +69,7 @@ public class ApiController {
         return problemRepository.getAlgebraProblemCounts();
     }
 
-    @GetMapping(value = "/counts/{category}", produces = "application/json")
+    @GetMapping(value = "/categories/{category}/counts", produces = "application/json")
     @Operation(summary = "Get counts of algebra problems for a specific category")
     @Parameters({
             @Parameter(
@@ -82,7 +82,7 @@ public class ApiController {
     public CountsByLevels getAlgebraProblemCountsForCategory(
             @PathVariable String category
     ){
-        return problemRepository.getAlgebraProblemCountsForCategory(
+        return problemRepository.getAlgebraProblemCountsByCategory(
                 AlgebraProblemCategory.fromString(category)
         );
     }

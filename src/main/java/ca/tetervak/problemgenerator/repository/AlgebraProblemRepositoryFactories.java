@@ -26,7 +26,7 @@ public class AlgebraProblemRepositoryFactories
     }
 
     @Override
-    public @NonNull CountsByLevels getAlgebraProblemCountsForCategory(
+    public @NonNull CountsByLevels getAlgebraProblemCountsByCategory(
             @NonNull AlgebraProblemCategory category
     ) {
         return problemCounts.getCountsByCategory(category);

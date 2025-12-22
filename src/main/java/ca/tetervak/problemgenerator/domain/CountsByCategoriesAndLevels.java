@@ -30,10 +30,30 @@ public record CountsByCategoriesAndLevels(
         };
     }
 
+    @NonNull
+    public CountsByLevels getCountsByCategory(String category) {
+        return getCountsByCategory(AlgebraProblemCategory.fromString(category));
+    }
+
     public int getCountByCategoryAndLevel(
             AlgebraProblemCategory category,
             DifficultyLevel level
     ) {
         return getCountsByCategory(category).getCountByLevel(level);
+    }
+
+    public int getCountByCategoryAndLevel(String category, String level) {
+        return getCountByCategoryAndLevel(
+                AlgebraProblemCategory.fromString(category),
+                DifficultyLevel.fromString(level)
+        );
+    }
+
+    public int getTotalByCategory(AlgebraProblemCategory category) {
+        return getCountsByCategory(category).total();
+    }
+
+    public int getTotalByCategory(String category) {
+        return getTotalByCategory(AlgebraProblemCategory.fromString(category));
     }
 }

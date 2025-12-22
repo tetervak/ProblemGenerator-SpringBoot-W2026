@@ -1,9 +1,6 @@
 package ca.tetervak.problemgenerator.controller;
 
-import ca.tetervak.problemgenerator.domain.AlgebraProblem;
-import ca.tetervak.problemgenerator.domain.AlgebraProblemCategory;
-import ca.tetervak.problemgenerator.domain.CountsByLevels;
-import ca.tetervak.problemgenerator.domain.DifficultyLevel;
+import ca.tetervak.problemgenerator.domain.*;
 import ca.tetervak.problemgenerator.model.CompareForm;
 import ca.tetervak.problemgenerator.model.RequestForm;
 import ca.tetervak.problemgenerator.repository.AlgebraProblemRepository;
@@ -35,6 +32,14 @@ public class ProblemsController {
         return "problems/problems-index";
     }
 
+    @GetMapping("/counts")
+    public ModelAndView problemsCounts() {
+        ModelAndView mav = new ModelAndView("problems/problems-counts");
+        CountsByCategoriesAndLevels counts = problemRepository.getAlgebraProblemCounts();
+        mav.addObject("counts", counts);
+        return mav;
+    }
+
     @GetMapping("/form")
     public String problemRequestForm(
             @ModelAttribute RequestForm requestForm,
@@ -64,7 +69,7 @@ public class ProblemsController {
     ) {
         ModelAndView mav = new ModelAndView("problems/categories/specific-category");
         mav.addObject("category", category);
-        CountsByLevels countsByLevels = problemRepository.getAlgebraProblemCountsForCategory(
+        CountsByLevels countsByLevels = problemRepository.getAlgebraProblemCountsByCategory(
                 AlgebraProblemCategory.fromString(category)
         );
         mav.addObject("countsByLevels", countsByLevels);

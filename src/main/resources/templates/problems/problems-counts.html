@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.simplecss.org/simple.min.css">
+    <link rel="stylesheet" th:href="@{/css/main.css}" href="../../static/css/main.css">
+    <link rel="stylesheet" th:href="@{/css/header.css}" href="../../static/css/header.css">
+    <title th:text="#{problem-counts}">Problem Counts</title>
+</head>
+<body>
+<header th:fragment="problems-header">
+    <h1 th:text="#{app-name}">Program Name</h1>
+    <div class="row-in-header">
+        <div class="spacer-in-header"></div>
+        <nav style="margin: 0">
+            <a th:href="@{/templates/problems/form}"
+               th:text="#{request-form}">Request Form</a>
+            <a th:each="category : ${categories}"
+               th:href="@{/problems/categories/{c}(c=${category})}"
+               th:text="#{'category-label.' + ${category}}">Category</a>
+        </nav>
+        <div th:replace="~{home/home-index :: language-bar}">Language Bar</div>
+    </div>
+</header>
+<main>
+    <p>
+        <a th:href="@{/index}" th:text="#{index-label}">Index</a>&nbsp;&#10219&nbsp;
+        <a th:href="@{/problems}" th:text="#{problems-label}">Problems</a>&nbsp;&#10219&nbsp;
+        <th:block th:text="#{problem-counts}">Problem Counts</th:block>
+    </p>
+    <h2 th:text="#{problem-counts}">Problem Counts</h2>
+    <table>
+        <thead>
+        <tr>
+            <th th:text="#{difficulty-level}">Difficulty Level</th>
+            <th th:each="category: ${categories}"
+                th:text="#{'category-label.' + ${category}}">Category
+            </th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+        <tr th:each="level: ${levels}">
+            <td th:text="#{'difficulty-label.' + ${level}}">Level</td>
+            <td th:each="category: ${categories}"
+                th:text="${counts.getCountByCategoryAndLevel(category, level)}">count
+            </td>
+        </tr>
+        <tr>
+            <th th:text="#{totals-label}">Totals</th>
+            <th th:each="category: ${categories}"
+                th:text="${counts.getTotalByCategory(category)}">Total
+            </th>
+        </tr>
+        </tbody>
+    </table>
+    <p>
+        <label>
+            <th:block th:text="#{total-label}">Total Problems</th:block>:
+            <span th:text="${counts.total}" class="value">Total Problems</span>
+        </label>
+    </p>
+</main>
+<footer th:replace="~{home/home-index :: course-footer}">Some Footer</footer>
+</body>
+</html>
