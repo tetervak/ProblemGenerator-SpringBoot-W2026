@@ -22,7 +22,8 @@ public enum DifficultyLevel {
             case "moderate" -> MODERATE;
             case "advanced" -> ADVANCED;
             case "challenging" -> CHALLENGING;
-            default -> UNKNOWN;
+            case "unknown" -> UNKNOWN;
+            default -> throw  new IllegalArgumentException("Invalid difficulty level: " + level);
         };
     }
 

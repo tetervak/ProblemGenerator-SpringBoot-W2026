@@ -1,0 +1,51 @@
+package ca.tetervak.problemgenerator.controller;
+
+import ca.tetervak.problemgenerator.model.AlgebraProblemDto;
+import ca.tetervak.problemgenerator.domain.AlgebraProblem;
+import ca.tetervak.problemgenerator.domain.AlgebraProblemCategory;
+import ca.tetervak.problemgenerator.domain.DifficultyLevel;
+import ca.tetervak.problemgenerator.repository.AlgebraProblemRepository;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.tags.Tag;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
+
+import java.util.List;
+
+@RestController
+@RequestMapping("/api/problems")
+@Tag(name = "Generator", description = "Generate list of problems")
+public class GeneratorController {
+
+    private final AlgebraProblemRepository problemRepository;
+
+    public GeneratorController(AlgebraProblemRepository repository) {
+        this.problemRepository = repository;
+    }
+
+    @GetMapping(value = "/generator",
+            produces = "application/json")
+    @Operation(summary = "Generate a list of algebra problems",
+            description = "Generate a list of algebra problems based on category, level, and number of problems")
+    public List<AlgebraProblemDto> generate(
+            @RequestParam(defaultValue = "addition") String category,
+            @RequestParam(defaultValue = "beginner") String level,
+            @RequestParam(defaultValue = "5") int number
+    ) {
+        if (number < 1 || number > 10) {
+            throw new IllegalArgumentException("Number must be between 1 and 10");
+        }
+
+        List<AlgebraProblem> list = problemRepository
+                .getRandomAlgebraProblemList(
+                        AlgebraProblemCategory.fromString(category),
+                        DifficultyLevel.fromString(level),
+                        number
+                );
+
+        return list.stream().map(AlgebraProblemDto::new).toList();
+    }
+
+}
