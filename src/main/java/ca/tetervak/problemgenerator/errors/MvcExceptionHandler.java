@@ -1,5 +1,7 @@
 package ca.tetervak.problemgenerator.errors;
 
+import ca.tetervak.problemgenerator.controller.HomeController;
+import ca.tetervak.problemgenerator.controller.ProblemsController;
 import ca.tetervak.problemgenerator.domain.AlgebraProblemCategory;
 import ca.tetervak.problemgenerator.domain.DifficultyLevel;
 import ca.tetervak.problemgenerator.model.RequestForm;
@@ -11,7 +13,7 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.resource.NoResourceFoundException;
 
-@ControllerAdvice
+@ControllerAdvice(assignableTypes = {HomeController.class, ProblemsController.class})
 public class MvcExceptionHandler {
 
     @ExceptionHandler(NoResourceFoundException.class)

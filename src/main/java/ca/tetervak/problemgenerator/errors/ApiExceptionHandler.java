@@ -1,16 +1,15 @@
 package ca.tetervak.problemgenerator.errors;
 
+import ca.tetervak.problemgenerator.controller.ApiController;
 import io.swagger.v3.oas.annotations.media.Content;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
-import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import org.springframework.http.HttpStatus;
-import org.springframework.web.ErrorResponse;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 import org.springframework.web.servlet.resource.NoResourceFoundException;
 
-@RestControllerAdvice
+@RestControllerAdvice(assignableTypes = ApiController.class)
 public class ApiExceptionHandler {
 
     @ExceptionHandler(IllegalArgumentException.class)

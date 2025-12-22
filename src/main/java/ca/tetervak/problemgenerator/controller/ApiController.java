@@ -6,6 +6,8 @@ import ca.tetervak.problemgenerator.domain.AlgebraProblemCategory;
 import ca.tetervak.problemgenerator.domain.DifficultyLevel;
 import ca.tetervak.problemgenerator.repository.AlgebraProblemRepository;
 import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.Parameter;
+import io.swagger.v3.oas.annotations.Parameters;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -17,11 +19,11 @@ import java.util.List;
 @RestController
 @RequestMapping("/api/problems")
 @Tag(name = "Generator", description = "Generate list of problems")
-public class GeneratorController {
+public class ApiController {
 
     private final AlgebraProblemRepository problemRepository;
 
-    public GeneratorController(AlgebraProblemRepository repository) {
+    public ApiController(AlgebraProblemRepository repository) {
         this.problemRepository = repository;
     }
 
@@ -29,6 +31,24 @@ public class GeneratorController {
             produces = "application/json")
     @Operation(summary = "Generate a list of algebra problems",
             description = "Generate a list of algebra problems based on category, level, and number of problems")
+    @Parameters({
+            @Parameter(
+                    name = "category",
+                    description = "The category of algebra problems to generate: addition, subtraction, multiplication, or division",
+                    example = "multiplication"
+            ),
+            @Parameter(
+                    name = "level",
+                    description =
+                            "The difficulty level of the problems: beginner, easy, intermediate, moderate, advanced, or challenging",
+                    example = "moderate"
+            ),
+            @Parameter(
+                    name = "number",
+                    description = "The number of problems to generate: 1..10",
+                    example = "10"
+            )
+    })
     public List<AlgebraProblemDto> generate(
             @RequestParam(defaultValue = "addition") String category,
             @RequestParam(defaultValue = "beginner") String level,
