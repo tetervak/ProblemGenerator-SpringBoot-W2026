@@ -5,7 +5,6 @@ import org.jspecify.annotations.NonNull;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
-import java.util.Random;
 
 @Repository
 public class AlgebraProblemRepositoryFactories
